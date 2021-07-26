@@ -241,3 +241,107 @@ const counts = alphabets.reduce((acc, current) => {
 }, {});
 
 console.log(counts); // a:3 b:1 c:2 d:1 e:1
+
+//프로토타입과 클래스
+
+/*객체 생성자*/
+//함수를 통해 새로운 객체를 만들고,그안에 넣고싶은 값, 또는 함수를 넣고 싶도록 합니다.
+function Animal(type, name, sound) {
+  this.type = type;
+  this.name = name;
+  this.sound = sound;
+  //익명함수
+  this.say = function () {
+    console.log(this.sound);
+  };
+}
+//this 는 그 함수에 해당되는 객체를 의미한다. 파라미터가 아님!
+
+const dog = new Animal('개', '멍멍이', '멍멍');
+const cat = new Animal('고양이', '야옹이', '야옹');
+
+dog.say();
+cat.say();
+
+/* 프로토 타입 */
+//객체생성자로 무언가를 만들었을때, 그 것을 활용하여 만들 수 있는 공유하는 함수
+function Animal(type, name, sound) {
+  this.type = type;
+  this.name = name;
+  this.sound = sound;
+}
+
+Animal.prototype.say = function () {
+  console.log(this.sound);
+};
+
+Animal.prototype.sharedValue = 1;
+
+const dog = new Animal('개', '멍멍이', '멍멍');
+const cat = new Animal('고양이', '야옹이', '야옹');
+
+dog.sharedValue; // 1
+
+dog.say();
+cat.say();
+
+/* 상속 */
+function Animal(type, name, sound) {
+  this.type = type;
+  this.name = name;
+  this.sound = sound;
+}
+
+Animal.prototype.say = function () {
+  console.log(this.sound);
+};
+
+function Dog(name, sound) {
+  Animal.call(this, '개', name, sound);
+}
+
+function Cat(name, sound) {
+  Animal.call(this, '고양이', name, sound);
+}
+
+Dog.prototype = Animal.prototype;
+Cat.prototype = Animal.prototype;
+
+const dog = new Dog('멍멍이', '멍멍');
+const cat = new Cat('야옹이', '야옹');
+
+dog.say();
+cat.say();
+
+/* ES6 Class */
+class Animal {
+  //생성자
+  constructor(type, name, sound) {
+    this.type = type;
+    this.name = name;
+    this.sound = sound;
+  }
+  say() {
+    console.log(this.sound);
+  }
+}
+
+//상속
+class Dog extends Animal {
+  constructor(name, sound) {
+    super('개', name, sound);
+  }
+}
+
+class Cat extends Animal {
+  constructor(name, sound) {
+    super('야옹이', name, sound);
+  }
+}
+
+const dog = new Dog('멍멍이', '멍멍');
+const cat = new Cat('야옹이', '야옹');
+
+dog.say();
+cat.say();
+//클래스에서도 프로토타입 사용이 가능하다. 근데 굳이?
