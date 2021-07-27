@@ -1,0 +1,94 @@
+<!-- 
+  요소(Element) :
+  <태그>내용</태그>
+  부모와 자식요소 :
+  <부모><자식>내용<자식><부모>
+  -> 
+  <부모>
+    <자식>내용</자식>
+  </부모>
+  인라인 요소: 글자를 만들기 위한 요소들 대표적으로 <span>이 있다.
+  블록 요소: 상자(레이아웃)을 만들기 위한 요소들 대표적으로 <div>가 있다.
+  빈 태그 : <meta> 와 같이 닫히는 태그가 없는 태그
+-->
+
+<!-- HTML 기본 구조 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 
+      meta : 어떤 목적을 가지고 만들어진 메타 데이터 태그
+      검색엔진 등에 제공하기 위해 데이터를 정보자원 자체에 포함하여 작성, 이러한 정보에는 식별정보,
+      접근점, 소재정보를 포함한다.
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- reset.css cdn : 브라우저의 css 속성을 초기화시켜준다. -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"> -->
+    <link rel="stylesheet" href="./main.css">
+  </head>
+  <body>
+    <!-- h1 : 블록 요소. 제목을 의미함. 숫자가 작을수록 더 중요한 제목을 정의.(Heading) -->
+    <p><h>h태그</h></p>
+    <h1>H1</h1>
+    <h2>H2</h2>
+    <h3>H3</h3>
+    <br><br>
+    <!-- div : 특별한 의미가 없는 구분을 위한 블록 요소(Division).-->
+    <p><h>div태그</h></p>
+    <div>Div 영역</div>
+    <br><br>
+    <!-- p : 블록 요소. 문장을 의미하는 요소. (Paragraph)-->
+    <p><h>p태그</h></p>
+    <p>pppppp</p>
+    <br><br>
+    <!-- img :인라인 요소. 이미지를 삽입하는 요소.(Image)-->
+    <p><h>img태그</h></p>
+    <img src="https://placeimg.com/320/100/any/grayscale" alt="삽입할 이미지의 이름"/>
+    <br><br>
+    <!-- ul/li : 블록요소. 순서가 필요없는 목록의 집합을 의미.(Unordered List) li: 목록 내 각 항목.(List Item)-->
+    <p><h>ul태그</h></p>
+    <ul>
+      <li>사과</li>
+      <li>딸기</li>
+      <li>바나나</li>
+    </ul>
+    <br><br>
+    <!-- a : 인라인요소. 다른/같은 페이지로 이동하는 하이퍼링크를 지정하는 요소.-->
+    <p><h>a태그</h></p>
+    <a href="https://www.naver.com" target="링크 URL의 표시(브라우저 탭) 위치">Naver</a>
+    <br><br>
+    <!-- span : 인라인요소.특별한 의미가 없는 구분을 위한 요소 -->
+    <p><h>span태그</h></p>
+    <span style="color: red;">!스판!</span>입니다.
+    <br><br>
+    <!-- br : 인라인 요소. 줄바꿈 요소.(Break)-->
+    <p><h>br태그</h></p>
+    <br>
+    <br><br>
+    <!-- 
+      input : 인라인요소임과 동시에 블록 요소. 사용자가 데이터를 입력하는 요소. 여러가지 타입을 통해 변화시킬 수 있다.
+      type : text, checkbox, radio 
+    -->
+    <p><h>input태그</h></p>
+    <input type="text" value="Hello" placeholder="입력해주세요."/>
+    <br><br>
+    <!-- 
+      table : 표(블록) 요소, 행(Row)과 열(Column)의 집합. 
+      tr : 행을 지정하는 요소.(Table Row)
+      td : 열을 지정하는 요소.(Table Data)
+    -->
+    <p><h>table태그</h></p>
+    <table>
+      <tr>
+        <td>A</td><td>B</td>
+      </tr>
+      <tr>
+        <td>C</td><td>D</td>
+      </tr>
+    </table>
+    <br><br>
+
+  </body>
+</html>
