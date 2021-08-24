@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./common.css">
+</head>
+<body>
+  <h1 class="on">하이요.</h1>
+  <div class="box1">
+    박스는 가장자리를 둘러싸고있는 <strong>block박스</strong>와 글줄 (line)을 이루고 있는 <strong>line박스</strong> 
+    그리고 그 안(in line) 에서 흐르고있는
+    <strong>inline박스</strong>로 이루어져 있습니다.
+  </div>
+  <ul>
+    리스트
+    <li>리스트1</li>
+  </ul>
+  <div class="box2">
+    <a href=""><img src="http://placehold.it/100x100" alt="test"/></a>
+  </div>
+  <div class="box3">
+    <div class="box2">
+      <p>텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴</p>
+    </div>
+    <div class="box2">
+      <p>텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴</p>
+    </div>
+    <div class="box2">
+      <p>텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴텍스트입니다.근데 조금 긴</p>
+    </div>
+  </div>
+</body>
+
+
+<script>
+  let target = window.document.querySelector('h1');
+
+  function f() {
+    target.textContent = '바이요.';
+  }
+  //콜백함수 개념 다시 한번 보기
+
+  //HTML 태그 만들기
+  let p_tag = document.createElement('p');
+  p_tag.textContent = '피태그.';
+  
+
+  //HTML 참조하면 좋은 사이트 : dribbble.com
+  //CSSSOM ? DOM과 마찬가지로 만들어놓은 CSS만의 국제 표준 문서
+</script>
+</html>
