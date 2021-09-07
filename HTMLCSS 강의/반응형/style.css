@@ -1,0 +1,112 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+.page {
+  width: 90.196078%; /* 920 / 1020 */
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  height: 400px;
+  background-color: lime;
+}
+.nav {
+  border: 2px solid black;
+  width: 54.130435%; /* 498 / 920 */
+  margin: 0 auto;
+  overflow: hidden;
+}
+.nav li {
+  float: left;
+  width: calc((100% - 8px) / 5);
+  /* box-sizing: border-box; */
+}
+.nav li + li {
+  margin-left: 2px;
+}
+.nav li > a {
+  padding: 10px 0;
+  display: block;
+  text-align: center;
+  background-color: red;
+}
+.product > ul {
+  padding: 26px 36px;
+  background-color: blue;
+  overflow: hidden;
+  /* width:648px; */
+  margin: 0 auto;
+}
+.product > ul > li {
+  width: 23.148148%; /* 150 / 648 */
+  /* height:150px; */
+  padding-top: 18%;
+  float: left;
+  background-color: yellow;
+  overflow: hidden;
+  position: relative;
+}
+.product > ul > li + li {
+  margin-left: 2.469136%; /* 16 / 648 */
+}
+.product > ul > li > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* margin-left:-186px;
+    margin-top:-135px; */
+  transform: translate(-50%, -50%);
+  min-height: 100%;
+}
+.about {
+  background-color: yellow;
+  height: 400px;
+}
+.about > ul {
+  border: 1px solid red;
+  width: calc(100% + 20px);
+  margin-left: -10px;
+}
+.about > ul::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.about > ul > li {
+  float: left;
+  border: 1px solid blue;
+  background-color: lightcoral;
+  width: 25%;
+  /* height:150px; */
+  box-sizing: border-box;
+  padding: 0 10px;
+  overflow: hidden;
+}
+.about > ul > li > a {
+  display: block;
+  /* height: 100%; */
+  padding-top: 60%;
+  border: 1px solid lime;
+  overflow: hidden;
+  position: relative;
+}
+.about > ul > li > a > img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 420이하 */
+@media screen and (max-width: 420px) {
+}
+
+/* 421이상 768이하 */
+@media screen and (min-width: 421px) and (max-width: 768px) {
+}
+/* 768이상 */
+@media screen and (min-width: 769px) {
+}
