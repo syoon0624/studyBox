@@ -36,13 +36,14 @@ class Stack {
   print() {
     let printArr = [];
     for (let i = 0; i < this.count; i++) {
-      console.log(this.items[i]);
       printArr[i] = this.items[i];
     }
+    this.count === 0 ? console.log('[]') : console.log(printArr);
     return printArr;
   }
   clear() {
     this.count = 0;
+    console.log('stack clear.');
     return this.count;
   }
   /*
@@ -57,4 +58,11 @@ stack.push('apple');
 stack.push('banana');
 
 stack.pop();
+stack.print();
+stack.clear();
+
+stack.print();
+stack.push('one');
+stack.push('two');
+stack.push('three');
 stack.print();
