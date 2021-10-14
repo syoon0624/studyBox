@@ -9,13 +9,9 @@
 </head>
 <body>
   <div class="page">
-    <header>
+    <header class="">
+      <button class="menu">menu</button>
       <ul class="nav">
-        <li><a href="">학교</a></li>
-        <li><a href="">학원</a></li>
-        <li><a href="">놀이터</a></li>
-        <li><a href="">집안</a></li>
-        <li><a href="">관공서</a></li>
       </ul>
     </header>
     <main>
@@ -42,6 +38,45 @@
 
   </div>
 </body>
+<script src='data.js'></script>
+<script>
+  const btn = document.querySelector('.menu');
+  btn.addEventListener('click', clickWork);
+  const header = document.querySelector('header');
+  const aElem = document.querySelectorAll('a');
 
+  const url = 'https://syoon0624.github.io/json/test.json';
+
+  const reqObj = new XMLHttpRequest();
+  const ul = document.querySelector('.nav');
+  reqObj.open('GET', url);
+  reqObj.responseType = 'json';
+  reqObj.send();
+  reqObj.addEventListener('load', work);
+    function work() {
+      const tabData = reqObj.response;
+        tabData.bankList.map(x => {
+        const li = document.createElement('li');
+        ul.appendChild(li);
+        const k = document.createElement('a');
+        k.textContent = x.price;
+        li.appendChild(k);
+      })
+  }
+  //reqObj.onload
+
+  function clickWork() {
+    if(header.classList.contains('on')) {
+      header.classList.remove('on');
+    } else {
+      header.classList.add('on');
+    }
+  }
+  
+
+
+
+  console.log(ul);
+</script>
 </html>
 </html>

@@ -13,6 +13,9 @@ li {
   height: 400px;
   background-color: lime;
 }
+.menu {
+  display: none;
+}
 .nav {
   border: 2px solid black;
   width: 54.130435%; /* 498 / 920 */
@@ -84,6 +87,7 @@ li {
   box-sizing: border-box;
   padding: 0 10px;
   overflow: hidden;
+  padding: 10px 10px;
 }
 .about > ul > li > a {
   display: block;
@@ -102,11 +106,53 @@ li {
 
 /* 420이하 */
 @media screen and (max-width: 420px) {
+  body {
+    background-color: red;
+  }
+  .about > ul > li {
+    float: none;
+    width: 100%;
+  }
+  .nav {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    display: none;
+    width: 100%;
+  }
+  .menu {
+    display: block;
+  }
+  .nav li {
+    float: none;
+    width: 100%;
+  }
+  header.on > .nav {
+    display: block;
+  }
+  .nav li > a {
+    background-color: plum;
+    text-decoration: none;
+  }
+  .nav li + li {
+    margin: 0;
+    border-top: 2px solid black;
+  }
+  header {
+    height: 50px;
+  }
 }
 
 /* 421이상 768이하 */
 @media screen and (min-width: 421px) and (max-width: 768px) {
+  body {
+    background-color: blue;
+  }
 }
 /* 768이상 */
 @media screen and (min-width: 769px) {
+  body {
+    background-color: orange;
+  }
 }
