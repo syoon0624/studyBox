@@ -1,23 +1,35 @@
-//반복문
-for (let i = 0; i < 12; i += 1) {
-  console.log(i);
+//함수 선언
+function add(eventName, callback) {
+  console.log(eventName);
+  callback(`Hello, It's Me! ${eventName}`);
 }
 
-const arr = ['Apple', 'Banana', 'Cherry'];
-for (const item of arr) {
-  console.log(item);
-}
-
-//for in 객체 for of 배열
-
-// break x
-arr.forEach(function (item) {
-  console.log(item);
+add('click', function (event) {
+  console.log(event);
 });
 
-//while
-let condition = true;
-while (condition) {
-  //if 조건에 맞으면
-  condition = false;
+//함수 표현 : 호이스팅 x
+const abc = function () {};
+abc();
+
+//화살표 함수 : return 생략 가능, 하지만 그럴려면 중괄호를 없애야함.
+const cde = param => {
+  console.log(param);
+};
+cde(1234);
+/*
+() => {} // 매개변수가 없을 경우
+x => {} // 매개변수가 한 개인 경우, 소괄호를 생략.
+(x, y) => {} // 매개변수가 여러 개인 경우, 소괄호를 생략 불가.
+
+x => { return x * x; }
+x => x * x  // 암묵적 return, 위 표현과 동일.
+
+() => { return { a: 1 }; }
+() => ({ a: 1 })  // 위 표현과 동일.
+
+() => {
+  const x = 10;
+  return x * x;
 }
+*/
