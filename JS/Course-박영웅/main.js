@@ -17,6 +17,7 @@ const cde = param => {
   console.log(param);
 };
 cde(1234);
+
 /*
 () => {} // 매개변수가 없을 경우
 x => {} // 매개변수가 한 개인 경우, 소괄호를 생략.
@@ -33,3 +34,10 @@ x => x * x  // 암묵적 return, 위 표현과 동일.
   return x * x;
 }
 */
+
+//즉시 실행 함수
+(function (win, doc) {
+  console.log(123);
+})(window, document);
+
+//콜백 함수? 함수의 인수로 사용되는 모든 함수
