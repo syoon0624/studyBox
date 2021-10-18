@@ -1,17 +1,23 @@
-const inputEl = document.querySelector('input');
+//반복문
+for (let i = 0; i < 12; i += 1) {
+  console.log(i);
+}
 
-console.log(inputEl);
+const arr = ['Apple', 'Banana', 'Cherry'];
+for (const item of arr) {
+  console.log(item);
+}
 
-inputEl.addEventListener('keyup', function (event) {
-  console.log(event.key);
-  switch (event.key) {
-    case 'Enter':
-      // 서버로 전송!
-      console.log('전송');
-      break;
-    case 'Escape':
-      // 종료!
-      console.log('종료');
-      break;
-  }
+//for in 객체 for of 배열
+
+// break x
+arr.forEach(function (item) {
+  console.log(item);
 });
+
+//while
+let condition = true;
+while (condition) {
+  //if 조건에 맞으면
+  condition = false;
+}
