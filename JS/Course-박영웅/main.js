@@ -1,23 +1,23 @@
-Array.prototype.double = function () {
-  return this.map(function (item) {
-    return item * 2;
-  });
-};
-Object.prototype.heropy = function () {
-  Object.keys(this).forEach(key => {
-    this[key] *= 2;
-  });
-};
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+// 전개 연산자(spread operator)
+const arr3 = [...arr1, ...arr2];
+console.log(arr3);
 
-const arr = [3, 4, 5, 6];
-const doubledArr = arr.double();
-console.log(doubledArr);
+arr1.push(...arr2);
+console.log(arr1);
 
-const obj = {
-  a: 3,
-  b: 4,
-  c: 5,
+const objA = { a: 1, b: 2 };
+const objB = { b: 3, d: 4 };
+
+//const objAB = Object.assign({}, objA, objB);
+const objAB = {
+  ...objA,
+  ...objB,
 };
+console.log(objAB);
 
-obj.heropy();
-console.log(obj);
+function arg(...rest) {
+  console.log(rest);
+}
+arg(...arr1);
