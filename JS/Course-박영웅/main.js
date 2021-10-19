@@ -1,40 +1,48 @@
-import { arr } from './sub.js';
-
-//assign
-const userA = {
-  name: 'HEROPY',
-  age: 85,
-  email: 'thesecon@hmail.com',
+//this
+const timer = {
+  timerName: 'HEROPY',
+  timeout: function () {
+    //이 함수는 호출된  timer라는 대상을 this로 지정
+    console.log(this.timerName);
+    //이 화살표 함수는 호출된 setTimeout()이라는 함수 상관 없이, timer라는 선언된 곳을 this로 지정
+    setTimeout(() => {
+      console.log(this.timerName);
+    }, 1000);
+  },
 };
-const userB = {
-  name: 'Leon',
-  age: 22,
-  isValid: false,
-};
-
-//Object.assign(userA, userB); // userA = userB 만약, assign(userA,userB,C,D...) 면 BCD의 데이터가 A로 병합
-/*console.log(userA);
-console.log(userB);
-console.log(userA === userB); //false
-*/
-const userAB = Object.assign({}, userA, userB);
-console.log(userAB);
-
-//entries 배열화 한다.
-const user = {
-  name: 'HEROPY',
-  age: 85,
-  isValid: false,
+const timerB = {
+  timerName: 'Leon',
 };
 
-console.log(Object.entries(user));
+timer.timeout();
+timer.timeout.call(timerB);
 
-for (const [key, value] of Object.entries(user)) {
-  console.log(`${key}: ${value}`);
+//prototype
+function User(first, last) {
+  this.firstName = first;
+  this.lastName = last;
 }
+User.prototype.getFullName = function () {
+  return `${this.firstName} ${this.lastName}`;
+};
 
-//freeze 객체 데이터를 더이상 할당하지 않도록 함.
-//확인방법 : Object.isFrozen(객체)
+const amy = new User('Amy', 'Jung');
+console.log(amy.getFullName());
 
-//keys: key값만 배열로 변환(많이 쓰인다고 함)
-//values: value값만 배열로 변환
+//객체 리터럴
+const user = {
+  firstName: 'HEROPY',
+  lastName: 'Park',
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
+
+console.log(user.getFullName());
+
+const leon = {
+  firstName: 'Leon',
+  lastName: 'Miller',
+};
+
+console.log(user.getFullName.call(leon));
