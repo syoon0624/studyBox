@@ -1,5 +1,21 @@
-import { checkType as c } from './utils/index.js';
-
-// console.log(checkType('123', 'String'));
-// console.log(random(4, 7));
-console.log(c(123, 'Number'));
+//비동기 처리 예 1. 콜백 함수
+function a(callback) {
+  setTimeout(() => {
+    console.log('a');
+    callback();
+  });
+}
+function b(callback) {
+  setTimeout(() => {
+    console.log('b');
+    callback();
+  });
+}
+function c() {
+  console.log('c');
+}
+a(() => {
+  b(() => {
+    c();
+  });
+});
