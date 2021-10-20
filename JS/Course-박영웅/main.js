@@ -1,25 +1,13 @@
-//불변성
-//[1, 2, 3, 4, 5, 6] <- 메모리 주소
-//[ |  |  |  |  |  ] <- 데이터
-let a = 'xy';
-let b = a; //b도 1번 메모리 주소를 바라봄
-b; // 'xy'
-a; // 'xy'
-b = 123; // 원시형 데이터는 새로운 메모리주소에 할당됨(불변성)
+const el = document.querySelector('[contenteditable]');
+const kl = document.querySelector('ul');
+const liEl = document.querySelector('li');
 
-//객체의 경우
-let a = { x: 1 };
-let b = a;
-b.x = 7; // 참조형 데이터는 같은 메모리주소를 바라보는 데이터 값을 변경(가변성)
+el.addEventListener('blur', event => {
+  console.log(event.target.innerHTML);
+});
 
-let a = { x: 1, y: 2 };
-let b = { y: 3, z: 4 };
-//전개 연산자의 경우, 제일 바깥의 데이터만 깊은 복사를 실행하게 되어, 더 깊은 참조의 경우, 얕은 복사를 하게 된다.(같은 메모리주소를 바라봄.)
-let c = { ...a };
-let d = a;
-c.x = 4;
-d.x = 2;
-console.log(c.x);
-console.log(a.x);
+//append도 가능
+kl.prepend(document.createElement('li')); // ul 앞에서 밀어넣는다.
 
-//깊은 복사: 완전히 새로운 메모리주소에 할당, 얕은 복사 : 같은 메모리주소를 바라본다.
+//data
+liEl.dataset.heropy;
