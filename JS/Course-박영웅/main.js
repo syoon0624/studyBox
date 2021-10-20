@@ -1,56 +1,15 @@
-//비동기 처리 예 2. promise
-function a() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('a');
-      resolve();
-    });
-  });
-}
-function b() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('b');
-      resolve();
-    });
-  });
-}
-function c() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('c');
-      resolve();
-    });
-  });
-}
-function d() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('d');
-      resolve();
-    });
-  });
-}
-function e() {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      console.log('e');
-      resolve();
-    });
-  });
-}
+import { loadImage } from './utils/index.js';
+const url =
+  'https://m.media-amazon.com/images/M/MV5BMjA0YjYyZGMtN2U0Ni00YmY4LWJkZTItYTMyMjY3NGYyMTJkXkEyXkFqcGdeQXVyNDg4NjY5OTQ@._V1_SX1300.jpg';
 
-a()
-  .then(() => b())
-  .then(() => c())
-  .then(() => d())
-  .then(() => e());
+const loadingEl = document.querySelector('.loading');
 
-async function x() {
-  await a();
-  await b();
-  await c();
-  await d();
-  await e();
-}
-x();
+loadImage(url).then(() => {
+  loadingEl.remove();
+});
+
+//또는
+(async function () {
+  await loadImage(url);
+  loadingEl.remove();
+})();
