@@ -1,13 +1,21 @@
-const el = document.querySelector('[contenteditable]');
-const kl = document.querySelector('ul');
-const liEl = document.querySelector('li');
+const users = [
+  { id: '1', name: 'HEROPY' },
+  { id: '2', name: 'Neo' },
+  { id: '3', name: 'Lucas' },
+  { id: '4', name: 'Lewis' },
+  { id: '5', name: 'Evan' },
+  { id: '6', name: 'Amy' },
+];
 
-el.addEventListener('blur', event => {
-  console.log(event.target.innerHTML);
+const ulEl = document.createElement('ul');
+users.forEach((user, index) => {
+  const liEl = document.createElement('li');
+  liEl.dataset.userId = user.id;
+  liEl.textContent = user.name;
+  liEl.addEventListener('click', () => {
+    liEl.remove();
+  });
+  ulEl.append(liEl);
 });
 
-//append도 가능
-kl.prepend(document.createElement('li')); // ul 앞에서 밀어넣는다.
-
-//data
-liEl.dataset.heropy;
+document.body.append(ulEl);
