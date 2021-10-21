@@ -5,6 +5,8 @@ export default {
 };
 export { default as checkType } from './checkType.js';
 export { default as random } from './random.js';
+export { default as loadImage } from './loadImage.js';
+export { default as Loader } from './loader.js';
 
 /*
 기본 내보내기
