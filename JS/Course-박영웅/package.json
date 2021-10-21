@@ -11,8 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "-": "^0.0.1",
-    "D": "^1.0.0",
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
     "vue": "^3.2.20"
