@@ -14,7 +14,7 @@ module.exports = (env, options) => {
         {
           //.scss파일 또는 css파일 찾기 라는 정규식
           test: /\.s?css$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
         },
         {
           test: /\.js$/,
