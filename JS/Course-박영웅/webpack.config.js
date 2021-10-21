@@ -9,6 +9,15 @@ module.exports = (env, options) => {
       // path: path.resolve(__dirname, 'dist'),
       // filename: 'main.js',
     },
+    module: {
+      rules: [
+        {
+          //.scss파일 또는 css파일 찾기 라는 정규식
+          test: /\.s?css$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+      ],
+    },
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
