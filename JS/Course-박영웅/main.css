@@ -1,11 +1,7 @@
-.parent {
-  width: 200px;
-  height: 100px;
-  background-color: blue;
-}
-
-.child {
+.box {
   width: 100px;
   height: 50px;
-  background-color: red;
+  background-color: rgba(255, 165, 0, 0.5);
 }
+
+/*# sourceMappingURL=main.css.map */
