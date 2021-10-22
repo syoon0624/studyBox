@@ -10,6 +10,11 @@
   },
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "ie >= 10"
+  ],
   "dependencies": {
     "dayjs": "^1.10.7",
     "lodash": "^4.17.21",
