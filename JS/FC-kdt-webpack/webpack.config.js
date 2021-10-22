@@ -1,3 +1,4 @@
+const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -5,6 +6,9 @@ module.exports = (env, options) => {
   return {
     resolve: {
       extensions: ['.js'],
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+      },
     },
     entry: './src/main.js',
     output: {

@@ -1,8 +1,4 @@
-const a = 1;
+import './scss/main.scss';
+import { checkType } from './utils/checkType';
 
-const abc = () => {
-  console.log(a);
-};
-
-const b = [1, 2, 3];
-b.includes(2);
+console.log(checkType());
