@@ -12,6 +12,7 @@
         <div v-bind:style="`color: ${color};`">{{ counter }}</div>
         <button @click="counter += 1">Increase!</button>
         <button @click="counter -= 1">Decrease..</button>
+        <input type="text" v-bind:disabled="!disabled"/>
     </div>
     <script>
         const app = Vue.createApp({
@@ -19,7 +20,8 @@
             data() {
                 return {
                     counter: 0,
-                    color: 'red'
+                    color: 'red',
+                    disabled: true
                 }
             },
         })
