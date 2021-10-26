@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="app">
-        <div>{{ counter }}</div>
+        <div ref="heropy">{{ counter }}</div>
         <button @click="counter += 1">Increase!</button>
         <button @click="counter -= 1">Decrease..</button>
     </div>
@@ -20,6 +20,22 @@
                 return {
                     counter: 0
                 }
+            },
+            beforeCreate() {
+                console.log(this.counter)
+            },
+            created() {
+                console.log(this.counter)
+            },
+            beforeMount() {
+                console.log('beforeMount:')
+                console.log(this.counter)
+                console.log(this.$refs.heropy)
+            },
+            mounted() {
+                console.log('mounted:')
+                console.log(this.counter)
+                console.log(this.$refs.heropy)
             }
         })
         app.mount('#app')
