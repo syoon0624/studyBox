@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="app">
-        <div ref="heropy">{{ counter }}</div>
+        <div v-bind:style="`color: ${color};`">{{ counter }}</div>
         <button @click="counter += 1">Increase!</button>
         <button @click="counter -= 1">Decrease..</button>
     </div>
@@ -18,25 +18,10 @@
             //데이터 객체는 함수로 만들어야 함
             data() {
                 return {
-                    counter: 0
+                    counter: 0,
+                    color: 'red'
                 }
             },
-            beforeCreate() {
-                console.log(this.counter)
-            },
-            created() {
-                console.log(this.counter)
-            },
-            beforeMount() {
-                console.log('beforeMount:')
-                console.log(this.counter)
-                console.log(this.$refs.heropy)
-            },
-            mounted() {
-                console.log('mounted:')
-                console.log(this.counter)
-                console.log(this.$refs.heropy)
-            }
         })
         app.mount('#app')
     </script>
