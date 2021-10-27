@@ -15,47 +15,23 @@
         }
     </style>
     <div id="app">
-        <!--
-        <div :style="`color: ${count > 3 ? 'red' : 'inherit'}; font-size: ${double > 10 ? '30px' : '16px'} `">{{ count }} / {{ double }}</div>
-        -->
-        <div :class="{
-             active: count > 3   
-            }"
-            >{{ count }} / {{ double }}</div>
-        <button @click="increase">increase!</button>
+        <div v-if="isShow">123</div>
+        <button @click="toggle">Toggle!</button>
     </div>
     <script>
-        const app = Vue.createApp({
-            //데이터 객체는 함수로 만들어야 함
+        const MyComponent = {
             data() {
                 return {
-                    count: 0,
+                    isShow: true
                 }
-            },
-            //계산된 데이터
-            computed: {
-                double: {
-                    get() {
-                        //Getter
-                        return this.count * 2
-                    },
-                    set() {
-                        //Setter
-                        this.message += '!'
-                    }
-                }
-            },
-            watch: {
-                count() {
-                    console.log('count:', this.count)
-                }
-            },
-            methods: {
-                increase() {
-                    this.count += 1
-                },
+            },methods: {
+            toggle() {
+                this.isShow = !this.isShow
             }
-        })
+        }
+        }
+        
+        const app = Vue.createApp(MyComponent)
         app.mount('#app')
     </script>
 </body>
