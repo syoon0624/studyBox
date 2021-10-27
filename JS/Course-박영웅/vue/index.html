@@ -19,8 +19,6 @@
             data() {
                 return {
                     count: 0,
-                    message: ''
-                    //double: 1,
                 }
             },
             //계산된 데이터
@@ -36,10 +34,14 @@
                     }
                 }
             },
+            watch: {
+                count() {
+                    console.log('count:', this.count)
+                }
+            },
             methods: {
                 increase() {
                     this.count += 1
-                    this.double = null;
                 },
             }
         })
