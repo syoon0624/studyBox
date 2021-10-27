@@ -8,9 +8,20 @@
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
+    <style>
+        .active {
+            color: red;
+            font-size: 30px;
+        }
+    </style>
     <div id="app">
-        <div>{{ count }} / {{ double }}</div>
-        <div>{{ double }}</div>
+        <!--
+        <div :style="`color: ${count > 3 ? 'red' : 'inherit'}; font-size: ${double > 10 ? '30px' : '16px'} `">{{ count }} / {{ double }}</div>
+        -->
+        <div :class="{
+             active: count > 3   
+            }"
+            >{{ count }} / {{ double }}</div>
         <button @click="increase">increase!</button>
     </div>
     <script>
