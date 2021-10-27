@@ -9,22 +9,30 @@
 </head>
 <body>
     <div id="app">
-        <div v-bind:style="`color: ${color};`">{{ counter }}</div>
-        <button @click="counter += 1">Increase!</button>
-        <button @click="counter -= 1">Decrease..</button>
-        <input type="text" v-bind:disabled="!disabled"/>
-        <button @click="disabled = !disabled">Toggle!</button>
+        <div>{{ count }} / {{ double }}</div>
+        <button @click="increase">increase!</button>
     </div>
     <script>
         const app = Vue.createApp({
             //데이터 객체는 함수로 만들어야 함
             data() {
                 return {
-                    counter: 0,
-                    color: 'red',
-                    disabled: true
+                    count: 0,
+                    //double: 1,
                 }
             },
+            //계산된 데이터
+            computed: {
+                double() {
+                    return this.count * 2
+                }
+            },
+            methods: {
+                increase() {
+                    this.count += 1
+                    //this.double = this.count *2
+                }
+            }
         })
         app.mount('#app')
     </script>
