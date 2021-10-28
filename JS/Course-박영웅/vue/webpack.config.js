@@ -7,7 +7,7 @@ module.exports = (env, options) => {
   console.log(env, options)
   return {
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.js', '.vue'],
       alias: {
         '~': path.resolve(__dirname, 'src')
       }
