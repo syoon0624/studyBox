@@ -9,35 +9,6 @@
 </head>
 <body>
     <div id="app">
-        <text-field></text-field>
-        <text-field></text-field>
-        <text-field></text-field>
     </div>
-    <script>
-        const TextField = {
-            data() {
-                return {
-                    message: ''
-                }
-            },
-            template: `
-            <input v-model="message" />
-            <div>{{ message }}</div>
-            `
-        }
-        const MyComponent = {
-            components: {
-                'text-field': TextField
-            },
-            data() {
-                return {
-                    checkedNames: []
-                }
-            },
-        }
-        const app = Vue.createApp(MyComponent)
-        // app.component('text-field', TextField)
-        app.mount('#app')
-    </script>
 </body>
 </html>

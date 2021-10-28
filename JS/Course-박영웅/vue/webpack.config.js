@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = (env, options) => {
   console.log(env, options)
@@ -48,7 +49,8 @@ module.exports = (env, options) => {
         patterns: [
           { from: 'static' }
         ]
-      })
+      }),
+      new VueLoaderPlugin()
     ],
     // devServer: {
     //   port: 8080,
