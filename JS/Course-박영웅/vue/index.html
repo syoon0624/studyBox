@@ -9,19 +9,26 @@
 </head>
 <body>
     <div id="app">
-        <div id="v-model-multiple-checkboxes">
-            <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
-            <label for="jack">Jack</label>
-            <input type="checkbox" id="john" value="John" v-model="checkedNames" />
-            <label for="john">John</label>
-            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
-            <label for="mike">Mike</label>
-            <br />
-            <span>Checked names: {{ checkedNames }}</span>
-          </div>
+        <text-field></text-field>
+        <text-field></text-field>
+        <text-field></text-field>
     </div>
     <script>
+        const TextField = {
+            data() {
+                return {
+                    message: ''
+                }
+            },
+            template: `
+            <input v-model="message" />
+            <div>{{ message }}</div>
+            `
+        }
         const MyComponent = {
+            components: {
+                'text-field': TextField
+            },
             data() {
                 return {
                     checkedNames: []
@@ -29,6 +36,7 @@
             },
         }
         const app = Vue.createApp(MyComponent)
+        // app.component('text-field', TextField)
         app.mount('#app')
     </script>
 </body>
