@@ -1,6 +1,6 @@
 <template>
     <h1>{{ message }}</h1>
-    <TextField />
+    <TextField message="HEROPY" :count="2"/>
 </template>
 
 <script>
