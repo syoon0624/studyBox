@@ -1,15 +1,14 @@
 <template>
     <h1>{{ message }}</h1>
-    <TextField :message="message" :count="count" @heropy="message = $event"/>
-    <button @click="count+=1">increase</button>
+    <HelloWorld class="active"/>
 </template>
 
 <script>
-import TextField from '~/components/TextField'
+import HelloWorld from '~/components/TextField'
 
 export default {
     components: {
-        'TextField': TextField
+       HelloWorld
     },
     data() {
         return {
