@@ -1,7 +1,7 @@
 <template>
     <button @click="log">
         <slot></slot>
-        {{ sample }}
+        <div >{{ $store.state.heropy }}</div>
     </button>
     
 </template>
