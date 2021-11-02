@@ -41,6 +41,7 @@
   "dependencies": {
     "@vue/compiler-sfc": "^3.2.20",
     "axios": "^0.24.0",
-    "vue": "^3.2.20"
+    "vue": "^3.2.20",
+    "vuex": "^4.0.2"
   }
 }
