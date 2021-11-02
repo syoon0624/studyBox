@@ -18,8 +18,9 @@ export default {
             count: 7
         }
     },
-    mounted() {
-        this.$fetch()
+    async mounted() {
+        const res = await this.$fetch('matrix')
+        console.log(res)
     }
 }
 </script>

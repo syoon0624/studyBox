@@ -6,5 +6,7 @@ import { fetch } from '~/plugins'
 const app = Vue.createApp(App)
 //플러그인 등록 방법
 //app.use(store)
-app.use(fetch)
+app.use(fetch, {
+    endpoint: 'https://www.omdbapi.com'
+})
 app.mount('#app')
