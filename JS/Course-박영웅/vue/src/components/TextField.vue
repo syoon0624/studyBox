@@ -1,5 +1,7 @@
 <template>
-    <input type="text" :value="message"/>
+    <input type="text" :value="message"
+    @input="$emit('heropy', $event.target.value)"
+    />
     <div>{{ count }}</div>
 </template>
 

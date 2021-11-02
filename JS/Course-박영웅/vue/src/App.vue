@@ -1,6 +1,7 @@
 <template>
     <h1>{{ message }}</h1>
-    <TextField message="HEROPY" :count="2"/>
+    <TextField :message="message" :count="count" @heropy="message = $event"/>
+    <button @click="count+=1">increase</button>
 </template>
 
 <script>
@@ -12,7 +13,8 @@ export default {
     },
     data() {
         return {
-            message: 'Hello Vue SFC!'
+            message: 'Hello Vue SFC!',
+            count: 7
         }
     }
 }
