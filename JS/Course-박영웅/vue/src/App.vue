@@ -17,6 +17,9 @@ export default {
             message: 'Hello Vue SFC!',
             count: 7
         }
+    },
+    mounted() {
+        this.$fetch()
     }
 }
 </script>
