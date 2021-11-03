@@ -23,9 +23,9 @@ export default createStore({
         reverseMessage(state) {
             state.message = state.message.split('').reverse().join('')
         },
-        assignState(state, heropy) { //heropy must be object!!
-            Object.keys(heropy).forEach(key => {
-                state[key] = heropy[key]
+        assignState(state, payload) { //heropy must be object!!
+            Object.keys(payload).forEach(key => {
+                state[key] = payload[key]
             })
         }
     },
@@ -34,13 +34,14 @@ export default createStore({
         // 함수 - 명령형
         increase({ state, commit }) {
             commit('assignState', {
-                count: state.count + 1
+                count: state.count + 1,
+                message: 'Good~~~'
             })
         },
-        reverseMessage({ state, commit }) {
-            commit('assignState'), {
-                message: state.message.split('').reverse().join('')
-            }
+        updateMessage({ commit }) {
+            commit('assignState', {
+                message: 'Good Morning~'
+            })
         }
     }
 })

@@ -1,5 +1,5 @@
 <template>
-    <div >{{ $store.state.heropy }}</div>
+    <div >{{ $store.state.message }}</div>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
     <button @click="log">
         <slot></slot>
-        <div >{{ $store.state.heropy }}</div>
+        <div >{{ $store.state.message }}</div>
     </button>
     
 </template>

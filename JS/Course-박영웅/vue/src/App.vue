@@ -1,5 +1,7 @@
 <template>
-    <h1>{{ message }}</h1>
+    <h1 @click="updateMessage">{{ message }}</h1>
+    <h1>{{ heropy }}</h1>
+    <h1>{{ reversedMessage }}</h1>
     <HelloWorld class="active"/>
     <TheButton />
 </template>
@@ -16,6 +18,19 @@ export default {
         return {
             message: 'Hello Vue SFC!',
             count: 7
+        }
+    },
+    computed: {
+        heropy() {
+            return this.$store.state.message
+        },
+        reversedMessage() {
+            return this.$store.getters.reversedMessage
+        }
+    },
+    methods: {
+        updateMessage() {
+            this.$store.dispatch('updateMessage')
         }
     },
     async mounted() {
