@@ -41,6 +41,7 @@ export default {
             commit('assignState', {
                 message: 'Good Morning~'
             })
+            return true;
         }
     }
 }
