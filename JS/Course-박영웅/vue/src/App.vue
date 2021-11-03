@@ -2,20 +2,11 @@
     <h1 @click="updateMessage">{{ msg }}</h1>
     <h1>{{ message }}</h1>
     <h1>{{ reversedMessage }}</h1>
+    <input type="text" v-model="message" />
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
-function mapState(moduleName, stateNames) {
-    const res = {}
-    stateNames.forEach(name => {
-        res[name] = function() {
-            return this.$store.state[moduleName][name]
-        }
-    })
-    return res
-}
 
 export default {
     data() {
@@ -25,12 +16,19 @@ export default {
         }
     },
     computed: {
-        ...mapState('message', [
-            'message',
-        ]),
         ...mapGetters('message', [
             'reversedMessage'
-        ])
+        ]),
+        message: {
+            get() {
+                return this.$store.state.message.message
+            },
+            set(message) {
+                this.$store.commit('message/assignState', {
+                    message
+                })
+            }
+        }
     },
     methods: {
         ...mapActions('message', [
