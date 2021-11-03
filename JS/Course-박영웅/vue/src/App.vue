@@ -1,35 +1,41 @@
 <template>
-    <h1 @click="updateMessage">{{ message }}</h1>
-    <h1>{{ heropy }}</h1>
+    <h1 @click="updateMessage">{{ msg }}</h1>
+    <h1>{{ message }}</h1>
     <h1>{{ reversedMessage }}</h1>
 </template>
 
 <script>
-import HelloWorld from '~/components/TextField'
-import TheButton from '~/components/TheButton'
+import { mapGetters, mapActions } from 'vuex'
+
+function mapState(moduleName, stateNames) {
+    const res = {}
+    stateNames.forEach(name => {
+        res[name] = function() {
+            return this.$store.state[moduleName][name]
+        }
+    })
+    return res
+}
 
 export default {
-    components: {
-       HelloWorld, TheButton
-    },
     data() {
         return {
-            message: 'Hello Vue SFC!',
+            msg: 'Hello Vue SFC!',
             count: 7
         }
     },
     computed: {
-        heropy() {
-            return this.$store.state.message.message
-        },
-        reversedMessage() {
-            return this.$store.getters['message/reversedMessage']
-        }
+        ...mapState('message', [
+            'message',
+        ]),
+        ...mapGetters('message', [
+            'reversedMessage'
+        ])
     },
     methods: {
-        updateMessage() {
-            this.$store.dispatch('message/updateMessage')
-        }
+        ...mapActions('message', [
+            'updateMessage'
+        ])
     },
     async mounted() {
         const res = await this.$fetch('matrix')
