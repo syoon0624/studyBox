@@ -1,10 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, routerKey } from 'vue-router'
 import Home from './Home'
 import About from './About'
 import Movie from './Movie'
 import MovieTitle from './MovieTitle'
 import MoviePoster from './MoviePoster'
 import MovieHeader from './MovieHeader'
+import SignIn from './SignIn'
 
 export default createRouter({
     history: createWebHistory(),
@@ -15,7 +16,14 @@ export default createRouter({
         },
         {
             path: '/about',
-            component: About
+            component: About,
+            meta: {
+                auth: true
+            }
+        },
+        {
+            path: '/signin',
+            component: SignIn
         },
         {
             path: '/movies/:item',
@@ -33,7 +41,11 @@ export default createRouter({
                 {
                     name: 'MoviePoster',
                     path: 'poster',
-                    component: MoviePoster
+                    component: MoviePoster,
+                    components: {
+                        MovieHeader,
+                        default: MoviePoster
+                    }
                 }
             ]
         }

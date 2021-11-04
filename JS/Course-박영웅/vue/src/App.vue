@@ -1,6 +1,7 @@
 <template>
     <TheHeader />
     <input type="text" v-model="searchText" @keyup.enter="fetchMovies" />
+    <br><br>
     <div v-for="movie in movies"
     :key="movie.imdbID"
     @click="moveTo(movie.imdbID)">{{ movie.Title }}</div>
