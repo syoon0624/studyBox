@@ -52,10 +52,8 @@ module.exports = (env, options) => {
       }),
       new VueLoaderPlugin()
     ],
-    // devServer: {
-    //   port: 8080,
-    //   open: true,
-    //   historyApiFallback: true
-    // }
+    devServer: {
+      historyApiFallback: true
+    }
   }
 }
