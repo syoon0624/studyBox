@@ -1,7 +1,6 @@
 <template>
     <h1>Movie Page!</h1>
-    <RouterLink :to="{ name: 'MovieTitle' }">Title</RouterLink>
-    <RouterLink :to="{ name: 'MoviePoster' }">Poster</RouterLink>
+    <RouterView name="MovieHeader" />
     <RouterView :title="title" :poster="poster" />
 </template>
 

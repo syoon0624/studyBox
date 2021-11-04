@@ -4,7 +4,7 @@ import About from './About'
 import Movie from './Movie'
 import MovieTitle from './MovieTitle'
 import MoviePoster from './MoviePoster'
-
+import MovieHeader from './MovieHeader'
 
 export default createRouter({
     history: createWebHashHistory(),
@@ -24,7 +24,10 @@ export default createRouter({
                 {
                     name: 'MovieTitle',
                     path: 'title',
-                    component: MovieTitle
+                    components: {
+                        MovieHeader,
+                        default: MovieTitle
+                    }
                 },
                 {
                     name: 'MoviePoster',
