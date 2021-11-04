@@ -20,6 +20,7 @@ export default createRouter({
         {
             path: '/movies/:item',
             component: Movie,
+            redirect: { name: 'MovieTitle' },
             children: [
                 {
                     name: 'MovieTitle',
