@@ -6,6 +6,7 @@ import MovieTitle from './MovieTitle'
 import MoviePoster from './MoviePoster'
 import MovieHeader from './MovieHeader'
 import SignIn from './SignIn'
+import NotFound from './NotFound'
 
 export default createRouter({
     history: createWebHistory(),
@@ -51,6 +52,10 @@ export default createRouter({
                     }
                 }
             ]
+        },
+        {
+            path: '/:heropy(.*)',
+            component: NotFound
         }
     ]
 })
