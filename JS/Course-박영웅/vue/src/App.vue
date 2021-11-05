@@ -1,4 +1,13 @@
 <template>
+    <TheModal v-model="isShow">
+        <template #activator>
+            <button @click="isShow = true">On Modal!</button>
+        </template>
+        <template #default>
+            <h1>Hello, Modal!</h1>
+            <button @click="isShow = false">X</button>
+        </template>
+    </TheModal>
     <UserName v-for="user in users" :key="user" :user="user"/>
 </template>
 
@@ -13,7 +22,8 @@ export default {
     },
     data() {
         return {
-            users: names
+            users: names,
+            isShow: false
         }
     },
     mounted () {
