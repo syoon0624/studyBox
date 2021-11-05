@@ -1,26 +1,23 @@
 <template>
-    <TheHeader />
-    <input type="text" v-model="searchText" @keyup.enter="fetchMovies" />
-    <br><br>
-    <div v-for="movie in movies"
-    :key="movie.imdbID"
-    @click="moveTo(movie.imdbID)">{{ movie.Title }}</div>
-    <RouterView />
+    <UserName v-for="user in users" :key="user" :user="user"/>
 </template>
 
 <script>
 import axios from 'axios'
-import TheHeader from '~/components/TheHeader'
+import UserName from '~/components/UserName'
+import names from '~/data/names.json'
 
 export default {
     components: {
-        TheHeader
+        UserName
     },
     data() {
         return {
-            searchText: '',
-            movies: []
+            users: names
         }
+    },
+    mounted () {
+        
     },
     methods: {
         async fetchMovies() {
