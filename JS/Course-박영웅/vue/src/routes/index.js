@@ -9,6 +9,9 @@ import SignIn from './SignIn'
 
 export default createRouter({
     history: createWebHistory(),
+    scrollBehavior: () => {
+        return { top: 0, left: 0 }
+    },
     routes: [
         {
             path: '/',
