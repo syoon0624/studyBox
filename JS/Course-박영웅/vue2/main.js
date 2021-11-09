@@ -1,23 +1,28 @@
-class User {
-    constructor(first, last) {
-        this.firstName = first
-        this.lastName = last
-    }
-    get fullName() {
-        return `${this.firstName} ${this.lastName}`
-    }
-    함수() {
-        return `${this.firstName} ${this.lastName}`
-    }
-    //정적 매소드. 범용적으로만 호출 가능
-    static div(fullName) {
-        return fullName.split(' ')
-    }
+function a() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(123)
+        }, 3000)
+    })
 }
 
+function b() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(456)
+        }, 2000)
+    })
+}
 
-const heropy = new User('HEROPY', 'Park')
-
-console.log(heropy)
-console.log(heropy.fullName)
-console.log(User.div('HEROPY Park'))
+async function xyz() {
+    //모든 비동기를 한번에 실행 가능, 순서 보장 x
+    const [x, y] = await Promise.all([
+        a(),
+        b()
+    ])
+    // const x = await a()
+    // const y = await b()
+    console.log(x)
+    console.log(y)
+}
+xyz()
