@@ -1,11 +1,12 @@
 <template>
-    <slot name="activator"></slot>
+    <slot name="activator" :attrs="{ onClick: onModal }"></slot>
     <teleport to="body">
         <template v-if="modelValue">
         <div class="modal" @click="offModal">
             <div class="modal-box"
             @click.stop>
-            <slot></slot>
+            <h1>Hello, Modal!</h1>
+            <button @click="isShow = false">X</button>
             </div>
         </div>
     </template>
@@ -38,6 +39,9 @@ export default {
         offModal() {
             if (this.persistent) return;
             this.$emit('update:modelValue', false)
+        },
+        onModal() {
+            this.$emit('update:modelValue', true)
         },
         escHandler(event) {
             if(event.key === 'Escape') {
