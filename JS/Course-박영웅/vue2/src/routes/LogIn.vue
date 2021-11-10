@@ -35,6 +35,7 @@ export default {
             })
             console.log(res.data.accessToken)
             sessionStorage.setItem('accessToken', res.data.accessToken)
+            this.$router.push('/')
         }
     }
 }
