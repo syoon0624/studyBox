@@ -65,6 +65,7 @@ module.exports = (env, options) => {
       new VueLoaderPlugin()
     ],
     devServer: {
+      port: 8070,
       historyApiFallback: true
     }
   }
