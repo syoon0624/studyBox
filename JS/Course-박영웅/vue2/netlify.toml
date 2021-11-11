@@ -1,6 +1,6 @@
 [build]
     command = "npm run build"
-    functions = "heropy"
+    functions = "functions"
     publish = "dist"
 
 [dev]

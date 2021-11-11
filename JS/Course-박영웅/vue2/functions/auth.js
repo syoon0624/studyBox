@@ -1,4 +1,7 @@
+require('dotenv').config()
 const axios = require('axios')
+
+const { API_KEY, USER_NAME } = process.env
 
 exports.handler = async function (event) {
     const { id, pw } = JSON.parse(event.body)
@@ -7,8 +10,8 @@ exports.handler = async function (event) {
         method: 'POST',
         headers: {
             "content-type": "application/json",
-            "apikey": "FcKdtJs202110",
-            "username": "pascal"
+            "apikey": API_KEY,
+            "username": USER_NAME
         },
         data: {
             email: id,
