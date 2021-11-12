@@ -1,8 +1,8 @@
 import { createStore } from 'vuex'
-import heropy from './heropy'
+import workspace from './workspace'
 
 export default createStore({
   modules: {
-    heropy
+    workspace
   }
 })
