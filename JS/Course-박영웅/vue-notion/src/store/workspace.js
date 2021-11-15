@@ -29,11 +29,13 @@ export default {
     readWorkspace() {
 
     },
-    async createWorkspace({ commit }) {
+    async createWorkspace({ commit }, payload = {}) {
+      const { parentId } = payload
       const currentWorkspace = await request({
         method: 'POST',
         data: {
-          title: ''
+          title: '',
+          parentId
         }
       })
       commit('assignState', {

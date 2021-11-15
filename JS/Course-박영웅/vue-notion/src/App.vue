@@ -2,7 +2,7 @@
   <div class="app__inner">
     <LNB />
     <div class="app__page">
-
+      <RouterView />
     </div>
   </div>
 
