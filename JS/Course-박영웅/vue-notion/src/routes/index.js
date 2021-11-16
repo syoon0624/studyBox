@@ -9,13 +9,13 @@ export default createRouter({
     {
       path: '/',
       component: Workspace,
-      children: [
-        {
+      // 자식 페이지
+      children: [{
         name: 'Workspace',
         path: 'workspaces/:id',
         component: Workspace
-      }
-    ]},
+      }]
+    },
     {
       path: '/about',
       component: About

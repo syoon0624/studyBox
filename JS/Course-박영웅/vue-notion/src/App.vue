@@ -2,6 +2,7 @@
   <div class="app__inner">
     <LNB />
     <div class="app__page">
+      <TheHeader />
       <RouterView />
     </div>
   </div>
@@ -11,10 +12,12 @@
 
 <script>
 import LNB from '~/components/LNB'
+import TheHeader from '~/components/TheHeader'
 
 export default {
   components: {
-    LNB
+    LNB,
+    TheHeader
   },
 }
 </script>
