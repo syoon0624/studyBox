@@ -1,24 +1,20 @@
 import './App.css';
-import TodayPlan from './component/TodayPlan';
-import MyComponent from './component/MyComponent';
-import C11_StateExample from './component/StateExample';
-import LifeCycle from './component/LifeCycle';
+import Counter from './component/Counter';
+import NewCount from './component/NewCounter';
 import { useEffect, useState } from 'react'
 
 const App = () => {
-  const [destroy, setDestroy] = useState(false);
+  const [count, setCount] = useState(20);
 
-  //ComponentDidMount 호출
-  useEffect(() => {
-    setDestroy(!destroy);
-  },[])
+  const sendChild = () => {
+    setCount(count + 10);
+  }
 
   return (
     <div className="App">
-      {/* <TodayPlan />
-      <MyComponent name="패스트 캠퍼스" />
-      <C11_StateExample /> */}
-      { destroy ? null : <LifeCycle /> }
+      <Counter count={count} />
+      <NewCount count={count} />
+      <button onClick={sendChild}> 자식으로 30 보내기</button>
     </div>
   );
 }
