@@ -38,7 +38,15 @@ const ChildComponent = props => {
 
     const handleClickNumber = () => {
         props.sendDataNumber(numberData);
-    }
+    };
+
+    const handleClickJson = () => {
+        props.sendDataJson({
+            stringData,
+            numberData
+        })
+    };
+
     return(
         <>
         <div>
@@ -58,6 +66,9 @@ const ChildComponent = props => {
             />
         </label>
         <button className="waves-effect waves-light btn" onClick={handleClickNumber}>부모로 보내기</button>
+
+        <button className="waves-effect waves-light btn" onClick={handleClickJson}>Json 보내기
+        </button>
     </div>
     </>
     );

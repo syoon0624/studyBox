@@ -16,11 +16,16 @@ const ParentComponent = () => {
         console.log(childNumber)
     }
 
+    const childDataJson = j => {
+        console.log(j)
+    }
+
     return(
         <div>
             <ChildComponent list={list} 
             sendDataNumber ={childDataNumber}
             sendData={childDataString}
+            sendDataJson={childDataJson}
             />
         </div>
     )
