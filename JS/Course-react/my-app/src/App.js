@@ -5,11 +5,12 @@ import TodoPage from './routes/TodoPage'
 import StoryInput from './component/StoryInput';
 import CardComponent from "./component/CardComponent";
 import StyleInput from "./component/StyleInput";
+import ParentComponent from "./component/ParentComponent";
 
 const App = () => {
   return (
     <div className="container" style={{paddingTop: "50px"}} >
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/todo" element={<TodoPage />} />
@@ -22,7 +23,8 @@ const App = () => {
         errorMessage="최대길이는 10자 입니다."
       ></StoryInput>
       <CardComponent />
-      <StyleInput validType="number"/>
+      <StyleInput validType="number"/> */}
+      <ParentComponent />
     </div>
   );
 }
