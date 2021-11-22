@@ -1,20 +1,17 @@
 import './App.css';
-import Counter from './component/Counter';
-import NewCount from './component/NewCounter';
-import { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './routes/HomePage'
+import TodoPage from './routes/TodoPage'
 
 const App = () => {
-  const [count, setCount] = useState(20);
-
-  const sendChild = () => {
-    setCount(count + 10);
-  }
-
   return (
     <div className="App">
-      <Counter count={count} />
-      <NewCount count={count} />
-      <button onClick={sendChild}> 자식으로 30 보내기</button>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/todo" element={<TodoPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
