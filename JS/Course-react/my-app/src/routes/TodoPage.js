@@ -3,41 +3,67 @@ import {useState} from 'react';
 import Todo from '../component/Todo'
 
 const TodoPage = () => {
-    const [list, setList] = useState([])
-    const [item, setItem] = useState('')
+    const [list, setList] = useState([]);
+    const [item, setItem] = useState('');
     const onChange = e => {
         setItem(e.target.value)
-    }
+    };
     const handlePress = e => {
         if(e.key === "Enter") {
             createItem();
         }
-    }
+    };
     const createItem = () => {
         if(item !== '') {
             addTask(item);
             setItem('');
         }
-    }
+    };
     const addTask = item => {
-        let copy = [...list,{text: item, isDone: false} ];
+        let copy = [...list,{id: list.length+1, text: item, isDone: false} ];
         setList(copy)
-    }
+    };
     const doneTodo = text => {
         let copy = list.map(ele => {
             return ele.text === text ? {...ele, isDone: !ele.isDone} : {...ele};
         })
         setList(copy);
-    }
+    };
+    const deleteTodo = text => {
+        let copy = list.filter(ele => ele.text !== text)
+        setList(copy);
+    };
+    const updateTodo = (text, newText) => {
+        let copy = list.map(ele => {
+            return ele.text === text ? {...ele, text: newText} : {...ele};
+        })
+        setList(copy);
+    };
   return (
     <div>
-        This is TodoPage.<br />
-        <input onChange={onChange} onKeyPress={handlePress} value={item}/>
-        <button onClick={createItem}>추가하기</button>
-        <button><Link to="/">홈으로 돌아가기</Link></button>
+        <div className="row">
+            <div className="col s10">
+                This is TodoPage.
+            </div>
+            <button className="waves-effect waves-light btn purple lighten-4">
+                <Link to="/" className="white-text">홈으로 돌아가기</Link>
+            </button>
+        </div>
+        <div className="input-field">
+            <input id="todo_input" type="text" className="validate" onChange={onChange} onKeyPress={handlePress} value={item}/>
+            <label className="active" htmlFor="todo_input">할일을 적고 엔터!</label>
+        </div>
+        <button className="btn" 
+        onClick={createItem}>추가하기</button>
         <ul>
             {list.map(ele => {
-               return( <Todo item = {ele.text} isDone={ele.isDone} doneTodo = {doneTodo} />)
+               return( <Todo key={ele.id} 
+                id={ele.id}
+                item={ele.text}
+                isDone={ele.isDone} 
+                doneTodo={doneTodo} 
+                deleteTodo={deleteTodo} 
+                updateTodo={updateTodo}/>)
             })}
         </ul>
     </div>
