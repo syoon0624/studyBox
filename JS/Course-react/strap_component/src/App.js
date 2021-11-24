@@ -1,24 +1,19 @@
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Container, Input } from "reactstrap"
+import ReactstrapCard from './component/ReactstrapCard';
+import ReactstrapCollapse from './component/ReactstrapCollapse';
+import ReactstrapFade from './component/ReactstrapFade';
+import ReactstrapForm from './component/ReactstrapForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Input />
+      <ReactstrapCard />
+      <ReactstrapCollapse />
+      <ReactstrapFade />
+      <ReactstrapForm />
+    </Container>
   );
 }
 
