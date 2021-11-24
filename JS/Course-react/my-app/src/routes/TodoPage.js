@@ -1,44 +1,62 @@
 import { Link } from 'react-router-dom';
-import {useState} from 'react';
+import { useState} from 'react';
 import Todo from '../component/Todo'
 
 const TodoPage = () => {
     const [list, setList] = useState([]);
     const [item, setItem] = useState('');
+
     const onChange = e => {
         setItem(e.target.value)
     };
+
     const handlePress = e => {
         if(e.key === "Enter") {
             createItem();
         }
     };
+
     const createItem = () => {
         if(item !== '') {
             addTask(item);
             setItem('');
         }
     };
+
     const addTask = item => {
         let copy = [...list,{id: list.length+1, text: item, isDone: false} ];
         setList(copy)
     };
+
     const doneTodo = text => {
         let copy = list.map(ele => {
             return ele.text === text ? {...ele, isDone: !ele.isDone} : {...ele};
         })
         setList(copy);
     };
+
     const deleteTodo = text => {
         let copy = list.filter(ele => ele.text !== text)
-        setList(copy);
+        if(list.length !== 0) {
+            let count = 0;
+            copy = copy.map(ele => {
+                count++;
+                ele.id = count;
+                return {...ele}
+            })
+            setList(copy);
+        } else {
+            setList(copy);
+        } 
     };
+
     const updateTodo = (text, newText) => {
         let copy = list.map(ele => {
             return ele.text === text ? {...ele, text: newText} : {...ele};
         })
         setList(copy);
     };
+
   return (
     <div>
         <div className="row">

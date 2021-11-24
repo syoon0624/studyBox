@@ -4,7 +4,7 @@ const Todo = props => {
     const {id, item, doneTodo, isDone, deleteTodo, updateTodo} = props;
     const [isUpdate, setIsUpdate] = useState(false);
     const [text, setText] = useState(item);
-
+    
     const handleClick = (e) => {
         e.preventDefault()
         doneTodo(item);
@@ -34,7 +34,7 @@ const Todo = props => {
     return (
       <li className="card">
       <div className="card-content">
-        <p>{id} 번째 항목.</p> 
+        <p className="card-title">{id} 번째 </p> 
         {
         isUpdate ? 
           <> 
