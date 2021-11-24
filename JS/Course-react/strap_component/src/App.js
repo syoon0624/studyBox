@@ -1,18 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import { Container, Input } from "reactstrap"
-import ReactstrapCard from './component/ReactstrapCard';
-import ReactstrapCollapse from './component/ReactstrapCollapse';
-import ReactstrapFade from './component/ReactstrapFade';
-import ReactstrapForm from './component/ReactstrapForm';
+import { Container } from "reactstrap"
+import SweetalertConfirm from './react_study/SweetalertConfirm';
 
 function App() {
   return (
     <Container>
-      <Input />
-      <ReactstrapCard />
-      <ReactstrapCollapse />
-      <ReactstrapFade />
-      <ReactstrapForm />
+      <SweetalertConfirm />
     </Container>
   );
 }
