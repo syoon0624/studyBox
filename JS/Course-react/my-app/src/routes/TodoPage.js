@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
-import { useState} from 'react';
+import { useState } from 'react';
 import Todo from '../component/Todo'
+import { useDispatch, useSelector } from 'react-redux';
+import { assignTodo, deleteTodos } from '../features/todoSlice';
 
 const TodoPage = () => {
-    const [list, setList] = useState([]);
     const [item, setItem] = useState('');
+
+    const todoList = useSelector( state => state.todo.todoList);
+    const dispatch = useDispatch();
 
     const onChange = e => {
         setItem(e.target.value)
@@ -24,37 +28,26 @@ const TodoPage = () => {
     };
 
     const addTask = item => {
-        let copy = [...list,{id: list.length+1, text: item, isDone: false} ];
-        setList(copy)
+        let copy = [...todoList,{id: todoList.length+1, text: item, isDone: false} ];
+        dispatch(assignTodo(copy));
     };
 
     const doneTodo = text => {
-        let copy = list.map(ele => {
+        let copy = todoList.map(ele => {
             return ele.text === text ? {...ele, isDone: !ele.isDone} : {...ele};
         })
-        setList(copy);
+        dispatch(assignTodo(copy));
     };
 
     const deleteTodo = text => {
-        let copy = list.filter(ele => ele.text !== text)
-        if(list.length !== 0) {
-            let count = 0;
-            copy = copy.map(ele => {
-                count++;
-                ele.id = count;
-                return {...ele}
-            })
-            setList(copy);
-        } else {
-            setList(copy);
-        } 
+        dispatch(deleteTodos(text));
     };
 
     const updateTodo = (text, newText) => {
-        let copy = list.map(ele => {
+        let copy = todoList.map(ele => {
             return ele.text === text ? {...ele, text: newText} : {...ele};
         })
-        setList(copy);
+        dispatch(assignTodo(copy));
     };
 
   return (
@@ -74,7 +67,7 @@ const TodoPage = () => {
         <button className="btn" 
         onClick={createItem}>추가하기</button>
         <ul>
-            {list.map(ele => {
+            {todoList.map(ele => {
                return( <Todo key={ele.id} 
                 id={ele.id}
                 item={ele.text}
