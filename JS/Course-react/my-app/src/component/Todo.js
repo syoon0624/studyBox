@@ -38,6 +38,7 @@ const Todo = props => {
     };
     const updateIsNotDone = e => {
       e.preventDefault();
+      setText(item);
       setIsUpdate(false);
     };
     return (

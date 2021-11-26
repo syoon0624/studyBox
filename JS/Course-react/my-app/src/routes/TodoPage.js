@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Todo from '../component/Todo'
 import { useDispatch, useSelector } from 'react-redux';
-import { assignTodo, deleteTodos } from '../features/todoSlice';
+import { assignTodo } from '../features/todoSlice';
 import api from "../features/api";
 import { useEffect } from 'react';
 
