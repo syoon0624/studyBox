@@ -21,6 +21,15 @@ const minusCounter = () => {
     return {
         type: MINUS_COUNTER,
     }
+};
+
+const USER_CALL_LOGIN = "USER_CALL_LOGIN";
+const userCallLoginAction = user => {
+    return {
+        type: USER_CALL_LOGIN,
+        user_id: user.user_id,
+        password: user.password,
+    }
 }
 
 // reducer
@@ -42,10 +51,34 @@ const counterReducer = (state = initial, action) => {
         default:
             return state;
     }
+};
+
+const initialUser = {
+    user_id: '',
+    password: '',
 }
 
+const userReducer = (state = initialUser, action) => {
+    switch(action.type) {
+        case USER_CALL_LOGIN:
+            return {
+                ...state,
+                user_id: action.user_id,
+                password: action.password
+            }
+        default:
+            return state;
+    }
+}
+
+const rootReducer = redux.combineReducers({
+    counter: counterReducer,
+    user: userReducer
+})
+
 // store
-const store = createStore(counterReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(logger));
+
 console.log("최초 : ", store.getState());
 
 // dispatch
@@ -62,3 +95,8 @@ store.dispatch(addCounter());
 store.dispatch(addCounter());
 
 store.dispatch(minusCounter());
+
+store.dispatch(userCallLoginAction({
+    user_id: 'test',
+    password: '1234'
+}))
