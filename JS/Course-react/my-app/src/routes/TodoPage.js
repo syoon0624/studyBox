@@ -3,12 +3,22 @@ import { useState } from 'react';
 import Todo from '../component/Todo'
 import { useDispatch, useSelector } from 'react-redux';
 import { assignTodo, deleteTodos } from '../features/todoSlice';
+import api from "../features/api";
+import { useEffect } from 'react';
 
 const TodoPage = () => {
     const [item, setItem] = useState('');
 
     const todoList = useSelector( state => state.todo.todoList);
     const dispatch = useDispatch();
+    const fetchData = async () => {
+        const a = await api.get();
+        dispatch(assignTodo(a));
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     const onChange = e => {
         setItem(e.target.value)
@@ -27,27 +37,51 @@ const TodoPage = () => {
         }
     };
 
-    const addTask = item => {
-        let copy = [...todoList,{id: todoList.length+1, text: item, isDone: false} ];
-        dispatch(assignTodo(copy));
+    const addTask = (item) => {
+        const newItem = async () => {
+            const a = await api.post(item);
+            console.log(a);
+            let copy = await [a, ...todoList];
+            dispatch(assignTodo(copy));
+        }
+        newItem();
     };
 
-    const doneTodo = text => {
-        let copy = todoList.map(ele => {
-            return ele.text === text ? {...ele, isDone: !ele.isDone} : {...ele};
-        })
-        dispatch(assignTodo(copy));
+    const doneTodo = datas => {
+        const newItem = async (datas) => {        
+            const data = {
+                id: datas.id,
+                title: datas.text,
+                done: !datas.done,
+                order: 0,
+            }
+            await api.put(data);
+            fetchData();
+        }
+        newItem(datas);
     };
 
-    const deleteTodo = text => {
-        dispatch(deleteTodos(text));
+    const deleteTodo = id => {
+        const deleteItem = async (id) => {
+            const a = await api.delete(id);
+            console.log(a);
+            fetchData();
+        }
+        deleteItem(id);
     };
 
-    const updateTodo = (text, newText) => {
-        let copy = todoList.map(ele => {
-            return ele.text === text ? {...ele, text: newText} : {...ele};
-        })
-        dispatch(assignTodo(copy));
+    const updateTodo = (datas) => {
+        const newItem = async (datas) => {        
+            const data = {
+                id: datas.id,
+                title: datas.text,
+                done: false,
+                order: 0,
+            }
+            await api.put(data);
+            fetchData();
+        }
+        newItem(datas);
     };
 
   return (
@@ -69,9 +103,10 @@ const TodoPage = () => {
         <ul>
             {todoList.map(ele => {
                return( <Todo key={ele.id} 
-                id={ele.id}
-                item={ele.text}
-                isDone={ele.isDone} 
+                id = {ele.id}
+                date={ele.createdAt}
+                item={ele.title}
+                isDone={ele.done} 
                 doneTodo={doneTodo} 
                 deleteTodo={deleteTodo} 
                 updateTodo={updateTodo}/>)

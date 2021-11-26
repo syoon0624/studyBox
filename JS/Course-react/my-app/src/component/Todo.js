@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 
 const Todo = props => {
-    const {id, item, doneTodo, isDone, deleteTodo, updateTodo} = props;
+    const {id, item, doneTodo, isDone, deleteTodo, updateTodo, date} = props;
     const [isUpdate, setIsUpdate] = useState(false);
     const [text, setText] = useState(item);
-    
+
     const handleClick = (e) => {
         e.preventDefault()
-        doneTodo(item);
+        const datas = {
+          text: item,
+          id,
+          done: isDone,
+        }
+        doneTodo(datas);
     };
     const handleDelete = e => {
       e.preventDefault();
-      deleteTodo(item);
+      deleteTodo(id);
     };
     const handleUpdate = e => {
       e.preventDefault();
@@ -24,7 +29,11 @@ const Todo = props => {
 
     const updateIsDone = e => {
       e.preventDefault();
-      updateTodo(item, text);
+      const datas = {
+        text,
+        id
+      }
+      updateTodo(datas);
       setIsUpdate(false);
     };
     const updateIsNotDone = e => {
@@ -34,7 +43,7 @@ const Todo = props => {
     return (
       <li className="card">
       <div className="card-content">
-        <p className="card-title">{id} 번째 </p> 
+        <span>
         {
         isUpdate ? 
           <> 
@@ -46,8 +55,10 @@ const Todo = props => {
            <button className="btn-small red"
            onClick={updateIsNotDone}> 취소 </button>
           </> :
-           <p className={isDone ? "line" : ""}>{item}</p>     
+           <p className={isDone ? `card-title line` : "card-title"}>{item}</p>     
         }
+        </span>
+        <p>생성날짜: {date}</p> 
       </div>
       <div className="row card-content grey lighten-4">
         <button className="col s2 offset-s8 waves-effect btn blue darken-4"
