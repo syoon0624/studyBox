@@ -3,6 +3,11 @@ console.log(redux)
 
 const createStore = redux.createStore;
 
+// middleware
+const reduxLogger = require("redux-logger");
+const logger = reduxLogger.createLogger();
+const applyMiddleware = redux.applyMiddleware;
+
 // action
 const ADD_COUNTER = "ADD_COUNTER";
 const addCounter = () => {
@@ -40,7 +45,7 @@ const counterReducer = (state = initial, action) => {
 }
 
 // store
-const store = createStore(counterReducer);
+const store = createStore(counterReducer, applyMiddleware(logger));
 console.log("최초 : ", store.getState());
 
 // dispatch
