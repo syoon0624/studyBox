@@ -90,9 +90,11 @@ const TodoPage = () => {
             <div className="col s10">
                 This is TodoPage.
             </div>
-            <button className="waves-effect waves-light btn purple lighten-4">
-                <Link to="/" className="white-text">홈으로 돌아가기</Link>
-            </button>
+            <Link to="/" className="white-text">
+                <button className="waves-effect waves-light btn purple lighten-4">
+                    홈으로 돌아가기
+                </button>
+            </Link>
         </div>
         <div className="input-field">
             <input id="todo_input" type="text" className="validate" onChange={onChange} onKeyPress={handlePress} value={item}/>
