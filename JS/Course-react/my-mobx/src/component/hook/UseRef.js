@@ -19,6 +19,7 @@ const UseRef = () => {
             </p>
             <Button onClick ={() => {
                 const age = Math.floor(Math.random() *50+1);
+                setAge(age);
             }}>
                 나이 랜덤 변경하기
             </Button>
