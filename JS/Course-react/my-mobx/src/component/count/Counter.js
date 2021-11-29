@@ -36,6 +36,10 @@ const [amountData, setAmountData] = useState("");
         <Button onClick={() => count.changeAmount(amountData)}>값 변경하기</Button>
         </Col>
       </Row>
+      <Row>
+        <Col>Counter = 상품번호 * 갯수 : </Col>
+        <Col>{count.total}</Col>
+      </Row>
     </Container>
   );
 });

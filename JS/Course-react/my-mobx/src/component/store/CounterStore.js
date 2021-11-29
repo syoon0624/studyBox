@@ -1,5 +1,5 @@
 // import { makeAutoObservable } from "mobx";
-import { action, makeObservable, observable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 class CounterStore {
   counter = 5;
   amount = 1;
@@ -12,6 +12,7 @@ class CounterStore {
       addCounter: action,
       minusCounter: action,
       changeAmount: action,
+      total: computed
     });
   }
 
@@ -31,6 +32,11 @@ class CounterStore {
     console.log("amount : ", changedAmount);
     this.amount = changedAmount
   };
+
+  get total() {
+      console.log(`Computed... ${this.counter} * ${this.amount}`);
+      return this.counter * this.amount;
+  }
 }
 
 export default CounterStore;
