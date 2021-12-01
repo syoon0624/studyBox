@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Input, Row } from 'reactstrap'
+import { Button, Col, Input, Row } from 'reactstrap'
 
 const Cart = (props) => {
     const {name, price, amount} = props
@@ -13,9 +13,15 @@ const Cart = (props) => {
                 가격    
                 <Input disabled value={price}/>
             </Col>
-            <Col sm="4">
+            <Col sm="2">
                 갯수   
                 <Input disabled value={amount}/>
+            </Col>
+            <Col sm="1">
+                <br />
+                <Button close onClick={() => {
+                    props.deleteItem(name);
+                }}/>
             </Col>
         </Row>
         

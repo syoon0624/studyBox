@@ -1,5 +1,6 @@
 // import { makeAutoObservable } from "mobx";
 import { action, computed, makeObservable, observable } from "mobx";
+
 class CartStore {
     cartItems = [];
     cartItem = {
@@ -16,6 +17,8 @@ class CartStore {
       cartItem: observable,
       addCart: action,
       assignCart: action,
+      deleteCart: action,
+      clearAll: action,
       total: computed
     });
   }
@@ -34,12 +37,20 @@ class CartStore {
     } else {
         isIn.amount++;
     }
-    console.log(this.cartItems);
   };
 
   assignCart = item => {
     this.cartItem = item;
   };
+
+  deleteCart = item => {
+      let copy = this.cartItems.filter(ele =>  ele.productName !== item)
+      this.cartItems = copy;
+  }
+
+  clearAll = () => {
+    this.cartItems= [];
+  }
 
   //computed
   get total() {

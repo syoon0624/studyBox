@@ -12,6 +12,17 @@ const ProductList = observer(({productStore, cartStore, ...props}) => {
     const addCart = item => {
         cartStore.addCart(item);
     }
+    const handleClick = () => {
+        const items = {
+            productName: name,
+            price: Number(price),
+            amount: 10,
+        };
+        productStore.addProduct(items);
+        console.log(toJS(productStore.products));
+        setName('');
+        setPrice('');
+    }
     return (
         <Card>
             <CardHeader>
@@ -31,17 +42,11 @@ const ProductList = observer(({productStore, cartStore, ...props}) => {
                 }}/>
                 <Input placeholder="가격" value={price} onChange={e => {
                     setPrice(e.target.value);
-                }} />
+                }} onKeyPress={e => {
+                    if(e.key === "Enter") handleClick();
+                }}/>
                 <Button onClick={() => {
-                    const items = {
-                        productName: name,
-                        price: Number(price),
-                        amount: 10,
-                    };
-                    productStore.addProduct(items);
-                    console.log(toJS(productStore.products));
-                    setName('');
-                    setPrice('');
+                    handleClick();
                 }}>추가하기</Button>
             </CardBody>
         </Card>
