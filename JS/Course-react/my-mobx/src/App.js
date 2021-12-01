@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
+import UseCallback from "./component/hook/UseCallback";
 import Mart from "./component/marekt/Mart";
 
 
@@ -6,7 +7,8 @@ import Mart from "./component/marekt/Mart";
 function App() {
   return (
     <div className="App">
-      <Mart />
+      {/* <Mart /> */}
+      <UseCallback />
     </div>
   );
 }
