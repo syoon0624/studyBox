@@ -7,8 +7,8 @@ import Mart from "./component/marekt/Mart";
 function App() {
   return (
     <div className="App">
-      {/* <Mart /> */}
-      <UseCallback />
+      <Mart />
+      {/* <UseCallback /> */}
     </div>
   );
 }

@@ -1,11 +1,11 @@
-import './App.css';
+import "bootstrap/dist/css/bootstrap.css";
 import ProxyTest from './component/ProxyTest';
-
+import { Container} from 'reactstrap'
 function App() {
   return (
-    <div className="App">
+    <Container>
       <ProxyTest />
-    </div>
+    </Container>
   );
 }
 
