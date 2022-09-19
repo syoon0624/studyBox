@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="heropy"></div>
+    <!-- html 전역 속성 -->
+    <a href="" id="" tabindex="-1" data-heropy="{ a: 1 }" class="heropy" title="Hello, World!">Hello</a>
+
+
+    <script>
+        const a = document.querySelector('a')
+        console.log(a.dataset.heropy)
+    </script>
+</body>
+</html>
