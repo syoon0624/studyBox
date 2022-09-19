@@ -16,19 +16,17 @@ const setColor = () => {
     if(colorType === "Simple") {
         let simpleBox = []
         simpleBox.push(`rgba(${
-            new Array(4).fill().map(
+            new Array(3).fill().map(
                 v => Math.floor(
                     Math.random() * 255)
                     )
                 })`)
         simpleBox.push(colors[Math.floor(Math.random() * colors.length)])
         simpleBox.push("#" + Math.round(Math.random() * 0xffffff).toString(16))
-        colorRandom = simpleBox[Math.floor(Math.random() * simpleBox.length)]
+        simpleBox[Math.floor(Math.random() * simpleBox.length)]
     } else {
         colorRandom = "#" + Math.round(Math.random() * 0xffffff).toString(16)
     }
     document.getElementById("colorName").innerHTML=colorRandom
     document.getElementById("backgroundColor").style.backgroundColor = colorRandom
 }
-
-console.log(document.styleSheets);
