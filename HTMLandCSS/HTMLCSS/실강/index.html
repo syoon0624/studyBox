@@ -6,44 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /*nth-of-type()도 있지만, 잘 안쓰임 */
-        .container ul.list li:nth-child(5) {
-            color: red;
-        }
-        /* 상속 */
+        /* 마진 병합 */
         .container {
-            height: 100px;
+            background-color: orange;
         }
-        ul {
-            color: green;
+        .item {
+            /* 
+             1. 형제 요소의 마진에 위아래가 만나면 중복이 발생하여 병합이 일어남 
+             2. 부모 요소의 마진 top과, 자식요소의 top, 부모요소의 bottom과 자식요소의 bottom이 만날때 발생
+            */
+            margin: 30px;
+            width: 100px;
+            height: 50px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* 말줄임표 */
         }
-        .list {
-            height: inherit;
+        .item img {
+            height: 100%;
+            display: block;
+        }
+        div {
+            border: 3px solid red;
+            width: 200px;
+            height: 120px;
+            background-image: linear-gradient(180deg, red, blue);
+            /*
+            background-image: url("https://heropy.blog/images/screenshot/generate-3d-photo-by-pixijs/pikachu.jpg"); 
+            */
+            background-size: cover;
+            text-indent: -9999px;
             color: red;
-        }
-        li {
-            height: inherit;
-            height: auto; /* 초기화 */
-            position: static;
-            float: none;
-            flex-grow: 0;
-            flex-shrink: 1;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <ul class="list">
-            <li>01</li>
-            <li>02</li>
-            <li>03</li>
-            <div>??</div>
-            <li>04</li>
-            <li>05</li>
-            <li>06</li>
-            <li>07</li>
-        </ul>
-    </div>
-    <ul>하하</ul>
+    <!-- HTML은 꼭 스네이크_케이스를 쓰도록!! -->
+    <div>피카츄</div>
 </body>
 </html>
