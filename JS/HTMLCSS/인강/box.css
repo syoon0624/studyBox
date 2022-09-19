@@ -1,0 +1,15 @@
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    transition: 1s;
+}
+/* 
+가상 클래스 선택자 
+Hover: 선택자 ABC 요소에 마우스 커서가 올라가 있는 동안 선택.
+Active: 마우스를 클릭하고 있는 동안 선택.
+focus: ABC 요소가 포커스되면 선택(input, a, button, label, select등의 요소에 맞추어 focus 가능) 
+*/
+.box:hover {
+    width: 300px;
+}
