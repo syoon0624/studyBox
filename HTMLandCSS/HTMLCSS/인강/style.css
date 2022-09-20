@@ -17,6 +17,51 @@ id선택자(#) : HTML id 속성의 값이 네이밍인 요소 선택.
 일반 형제 선택자: 선택자 ABC의 다음 형제 요소 XYZ 모두를 선택 (.orange ~ li)
 
 */
+
+/* 
+CSS 속성 
+박스 모델
+글꼴, 문자
+배경
+배치
+플렉스(정렬)
+전환
+변환
+띄움
+애니메이션
+그리드
+다단
+필터
+*/
+
+/* 
+CSS 단위
+px: 픽셀
+%: 상대적 백분율
+em: 요소의 글꼴 크기
+rem: 루트 요소(html)의 글꼴 크기
+vw: 뷰포트 가로 너비의 백분율
+vh: 뷰포트 세로 너비의 백분율
+
+글꼴 두꼐(font-weight)
+normal,400: 기본 두께
+bold,700: 두껍게
+border: 상위 요소보다 더 두껍게
+lighter: 상위 요소보다 더 얇게
+100 ~ 900까지 bold 조정 가능
+
+font-size
+16px: 기본 크기
+px,em,rem등 단위로 지정
+
+line-height(한 줄의 높이, 행간과 유사)
+
+font-family: 글꼴
+
+*/
+
 div {
-    
+    width: auto;
+    height: auto;
+    background-color: orange;
 }

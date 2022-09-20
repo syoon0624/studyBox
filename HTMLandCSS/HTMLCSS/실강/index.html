@@ -6,42 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* 마진 병합 */
         .container {
             background-color: orange;
         }
         .item {
-            /* 
-             1. 형제 요소의 마진에 위아래가 만나면 중복이 발생하여 병합이 일어남 
-             2. 부모 요소의 마진 top과, 자식요소의 top, 부모요소의 bottom과 자식요소의 bottom이 만날때 발생
-            */
-            margin: 30px;
-            width: 100px;
-            height: 50px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis; /* 말줄임표 */
-        }
-        .item img {
-            height: 100%;
-            display: block;
-        }
-        div {
-            border: 3px solid red;
-            width: 200px;
-            height: 120px;
-            background-image: linear-gradient(180deg, red, blue);
-            /*
-            background-image: url("https://heropy.blog/images/screenshot/generate-3d-photo-by-pixijs/pikachu.jpg"); 
-            */
-            background-size: cover;
-            text-indent: -9999px;
-            color: red;
+            width: 120px;
+            height: 70px;
+            border: 3px solid;
         }
     </style>
 </head>
 <body>
     <!-- HTML은 꼭 스네이크_케이스를 쓰도록!! -->
-    <div>피카츄</div>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
 </body>
 </html>
