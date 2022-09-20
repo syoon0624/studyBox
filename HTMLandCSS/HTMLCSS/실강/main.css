@@ -1,20 +1,15 @@
 .container {
-    /* width: 300px; */
-    height: 500px;
     border: 4px solid red;
     display: flex;
-    flex-wrap: wrap;
-    align-content: start;
 }
 .item {
     width: 100px;
+    /* width 값은 기본으로 가져간 후, 나머지를 증가넓이로 가져간다. */
     height: 100px;
     border: 4px solid;
-    /* flex-shrink 주축에 해당하는 감소 너비 비율을 조정 */
-    flex-shrink: 0;
+    flex-grow: 1;
 }
 
 .item:nth-child(2) {
-    /* 해당 아이템 순위 매기기 */
-    order: -1;
+    flex-grow: 2;
 }
