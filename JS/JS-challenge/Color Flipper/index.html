@@ -5,16 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="./main.js"></script>
+    <link rel="stylesheet" href="./main.css">
     <title>Document</title>
 </head>
-<body id="backgroundColor">
-    <button onclick="setSimpleMode()">Simple</button>
-    <button onclick="setHexMode()">Hex</button>
-    <div>
-        <p style="background-color: black; color: white">Background Color :
-        <span id="colorName"></span>
+<body id="back-color">
+    <div class="container">
+        <div class="head-bar">
+            <h1 class="title">Color Flipper</h1>
+            <div class="mode">
+                <button onclick="setSimpleMode()">Simple</button>
+                <button onclick="setHexMode()">Hex</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class = text-item>
+                <p>Background Color :
+                <span class="color-text" id="color-name"></span>
+            </div>
+            <button class="change-color-button" onclick="setColor()">CLICK ME</button>
+        </div>
     </div>
-    </p>
-    <button onclick="setColor()">색깔바꾸기</button>
 </body>
 </html>

@@ -1,0 +1,67 @@
+@import url("reset.css");
+
+.head-bar {
+    height:7vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    box-shadow: 0px 1px 10px 0px gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.head-bar .title {
+    font-size: 20px;
+    font-weight: bolder;
+    color: rgb(0, 204, 255);
+    /* border: 1px solid black; */
+}
+
+.head-bar button {
+    font-size: 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.head-bar button:hover {
+    color: rgb(0, 204, 255);
+}
+
+.text-item {
+    padding: 15px;
+    font-size: 40px;
+    font-weight: bolder;
+    border-radius: 10px;
+    background-color: black; 
+    color: white;
+}
+
+.main {
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.change-color-button {
+    margin-top: 20px;
+    font-weight: bolder;
+    padding: 10px 15px;
+    background-color: rgba(255, 255,255, 0);
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid black;
+    transition: 0.5s;
+}
+
+.change-color-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.color-text {
+    color:rgb(20, 134, 221);
+}
