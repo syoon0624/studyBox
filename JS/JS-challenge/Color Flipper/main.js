@@ -12,21 +12,22 @@ const setHexMode = () => {
 }
 
 const setColor = () => {
-    let colorRandom;
+    let colorRandom
+    let rgba =new Array(3).fill().map(
+        v => Math.floor(Math.random() * 255))
+    
+    rgba.push((Math.random() * 1).toFixed(1));
+    console.log(rgba);
+    
     if(colorType === "Simple") {
         let simpleBox = []
-        simpleBox.push(`rgba(${
-            new Array(3).fill().map(
-                v => Math.floor(
-                    Math.random() * 255)
-                    )
-                })`)
+        simpleBox.push(`rgba( ${rgba} )`)
         simpleBox.push(colors[Math.floor(Math.random() * colors.length)])
-        simpleBox.push("#" + Math.round(Math.random() * 0xffffff).toString(16))
-        simpleBox[Math.floor(Math.random() * simpleBox.length)]
+        simpleBox.push("#" + Math.floor(Math.random() * 0xffffff).toString(16))
+        colorRandom = simpleBox[Math.floor(Math.random() * simpleBox.length)]
     } else {
-        colorRandom = "#" + Math.round(Math.random() * 0xffffff).toString(16)
+        colorRandom = "#" + Math.floor(Math.random() * 0xffffff).toString(16)
     }
-    document.getElementById("colorName").innerHTML=colorRandom
-    document.getElementById("backgroundColor").style.backgroundColor = colorRandom
+    document.getElementById("color-name").innerHTML=colorRandom
+    document.getElementById("back-color").style.backgroundColor = colorRandom
 }
