@@ -1,10 +1,28 @@
 .container {
-    height: 300px;
+    height: 500px;
     border: 4px solid red;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 100px 100px 100px;
 }
 .item {
+    width: 100px;
+    height: 100px;
     border: 4px solid;
+    animation: heropy 2s;
+    animation-name: heropy;
+    animation-duration: 3s;
+    /* animation-timing-function: steps(5); */
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+}
+.item:hover {
+    animation-play-state: paused;
+}
+@keyframes heropy {
+    0% {
+        transform: translateX(0);
+        background-color: red;
+    }
+    100% {
+        transform: translateX(200px);
+        background-color: black;
+    }
 }
