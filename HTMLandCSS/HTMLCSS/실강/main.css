@@ -1,14 +1,19 @@
 @import url(reset.css);
-
-header {
-    height: 62px;
-    padding: 0 24px;
-    background-color: #161b22;
-    display: flex;
-    align-items: center;
+/* 변수 선언 */
+html {
+    --color-primary: red;
 }
 
-header .logo svg {
-    fill: #FFF;
+.container1 {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-primary);
+    margin: 10px;
 }
 
+.container2 {
+    width: 100px;
+    height: 100px;
+    background-color: var(--color-primary);
+    margin: 10px;
+}
