@@ -1,54 +1,39 @@
-;(async () => {
-  // 초기화
-  const moreBtnEl = document.querySelector('.btn')
-  let page = 1
-  let maxPage = -1
+import data from "./data";
 
-  // 최초 호출
-  const movies = await getMovies()
-  page += 1
-  renderMovies(movies);
+const inputEl = document.querySelector('input');
 
-  moreBtnEl.addEventListener('click', async () => {
-    console.log(2)
-    if(page >= maxPage) {
-      alert('마지막 페이지입니다.')
-    } else {
-      const movies = await getMovies(page)
-      page += 1  
-      renderMovies(movies);
-    }
-  })
+const keywordsEl = document.querySelector('.keywords');
 
-  
-  async function getMovies(page = 1) {
-    const res = await fetch(`https://omdbapi.com/?apikey=7035c60c&s=avengers&page=${page}`)
-    const { Search: movies, totalResults } = await res.json()
-    maxPage = Math.ceil(Number(totalResults))
-    console.log(1)
-    return movies
-  }
+// 일정 시간 동안 함수가 실행되지 않으면 함수를 실행한다.(마지막에 한 번에 실행)
+const fn = _.debounce(() => {
+    console.log(inputEl.vlaue)
+    const keywords = getKeywords(inputEl.value)
+    renderList(keywordsEl, keywords);
+}, 300)
 
-  function renderMovies(movies) {
-    const moviesEl = document.querySelector('.movies')
-  
-    for (const movie of movies) {
-      const el = document.createElement('div')
-      el.classList.add('movie')
-      el.innerHTML = /* html */ `
-        <h1>${movie.Title}</h1>
-        <img src="${movie.Poster}" />
-      `
-  
-      const h1El = el.querySelector('img')
-      h1El.addEventListener('click', () => {
-        console.log(movie.Title)
-      })
-      moviesEl.append(el)
-    }
-  }  
-})()
+inputEl.addEventListener('input', fn)
 
+inputEl.addEventListener('focus', () => {
+    showList();
+});
 
+inputEl.addEventListener('blur', () => {
+    hideList();
+});
 
+function showList() {
+    keywordsEl.classList.add('active');
+}
 
+function hideList() {
+    keywordsEl.classList.remove('active');
+};
+
+function getKeywords(value) {
+    console.log(`${vlaue}: 서버에 요청을 보냅니다!`);
+    return data.filter(item => item.includes(vlaue));
+};
+
+function renderList() {
+
+};
