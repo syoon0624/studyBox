@@ -157,7 +157,6 @@ const k = 6;
 console.log(solution(str, k));
 */
 
-
 /*
 //2차원 배열 - 각 행의 최댓값
 function solution(arr) {
@@ -317,27 +316,161 @@ console.log(solution(num, k));
 */
 
 // 카드 가져가기
-function solution(num, k) {
-    let answer = num.reduce((a, b) => a + b, 0);
-    let mins = 3000000000000;
-    let j = num.length - k;
-    let sum = 0;
-    let lt = 0;
+// function solution(num, k) {
+//     let answer = num.reduce((a, b) => a + b, 0);
+//     let mins = 3000000000000;
+//     let j = num.length - k;
+//     let sum = 0;
+//     let lt = 0;
 
-    for(let i = 0; i < j; i++) {
-        sum += num[i];
+//     for(let i = 0; i < j; i++) {
+//         sum += num[i];
+//     }
+
+//     for(let rt = j;rt < num.length;rt++) {
+//         sum += (num[rt] - num[lt]);
+//         mins = Math.min(mins, sum);
+//         lt++;
+//     }
+
+//     return answer - mins;
+// }
+
+// let num = [2, 3, 7, 1, 2, 1, 5];
+// let k = 4;
+// console.log(solution(num, k));
+
+// 부분 수열 (two pointer)
+// function solution(num, m) {
+//   let answer = 0;
+//   let left = 0;
+//   let sum = 0;
+//   for (let r = 0; r < num.length; r++) {
+//     sum += num[r];
+//     while (sum > m) {
+//       sum -= num[left];
+//       left++;
+//     }
+//     if (sum === m) answer++;
+//   }
+//   return answer;
+// }
+
+// let num = [1, 1, 2, 1, 3, 1, 1, 1, 2];
+// let k = 6;
+// console.log(solution(num, k));
+
+// 공사비용
+// function solution(cost, m) {
+//   let answer = 0;
+//   let len = 0;
+//   let left = 0;
+//   let sum = 0;
+
+//   for (let r = 0; r < cost.length; r++) {
+//     sum += cost[r];
+//     len++;
+//     while (sum > m) {
+//       sum -= cost[left];
+//       left++;
+//       len--;
+//     }
+//     if (len > answer) answer = len;
+//   }
+
+//   return answer;
+// }
+
+// let cost = [0, 150, 100, 0, 150, 0, 70, 140];
+// let m = 350;
+// console.log(solution(cost, m));
+
+// 최대 길이 부분 수열
+// function solution(cost, m) {
+//   let answer = 0;
+//   let cnt = 0;
+//   let left = 0;
+//   for (let right = 0; right < cost.length; right++) {
+//     if (cost[right] === 0) {
+//       cnt++;
+//     }
+//     while (cnt > m) {
+//       if (cost[left] === 0) {
+//         cnt--;
+//       }
+//       left++;
+//     }
+//     answer = Math.max(answer, right - left + 1);
+//   }
+//   return answer;
+// }
+
+// let cost = [1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1];
+// let m = 2;
+// console.log(solution(cost, m));
+
+// 연속된 자연수의 합
+// function solution(n) {
+//   let answer = 0;
+//   let left = 1;
+//   let sum = 0;
+
+//   for (let right = 1; right < n / 2 + 1; right++) {
+//     sum += right;
+//     while (sum > n) {
+//       sum -= left;
+//       left++;
+//     }
+//     if (sum === n) answer++;
+//   }
+//   return answer;
+// }
+
+// let n = 15;
+// console.log(solution(n));
+
+// 선택정렬
+// function solution(nums) {
+//   for (let i = 0; i < nums.length - 1; i++) {
+//     let minIndex = i;
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[minIndex] > nums[j]) minIndex = j;
+//     }
+//     if (i !== minIndex) {
+//       [nums[i], nums[minIndex]] = [nums[minIndex], nums[i]];
+//     }
+//   }
+//   return nums;
+// }
+
+// let nums = [2, 8, 3, 6, 1, 7, 5, 9];
+// console.log(solution(nums));
+
+// 버블정렬
+// function solution(nums) {
+//   for (let i = 0; i < nums.length; i++) {
+//     for (let j = 0; j < nums.length - i - 1; j++) {
+//       if (nums[j] > nums[j + 1]) {
+//         [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+//       }
+//     }
+//   }
+// }
+
+// const nums = [2, 8, 3, 6, 1, 7, 5, 9];
+// console.log(solution(nums));
+
+// 삽입 정렬
+function solution(nums) {
+  for (let i = 0; i < nums.length; i++) {
+    let temp = nums[i];
+    for (let j = i - 1; j >= 0; j--) {
+      if (nums[j] > temp) nums[j + 1] = nums[j];
+      else break;
     }
-
-    for(let rt = j;rt < num.length;rt++) {
-        sum += (num[rt] - num[lt]);
-        mins = Math.min(mins, sum);
-        lt++;
-    }
-
-
-    return answer - mins;
+    nums[j + 1] = temp;
+  }
 }
 
-let num = [2, 3, 7, 1, 2, 1, 5];
-let k = 4;
-console.log(solution(num, k));
+const nums = [2, 8, 3, 6, 1, 7, 5, 9];
+console.log(solution(nums));
