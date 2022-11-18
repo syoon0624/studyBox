@@ -461,16 +461,59 @@ console.log(solution(num, k));
 // console.log(solution(nums));
 
 // 삽입 정렬
-function solution(nums) {
-  for (let i = 0; i < nums.length; i++) {
-    let temp = nums[i];
-    for (let j = i - 1; j >= 0; j--) {
-      if (nums[j] > temp) nums[j + 1] = nums[j];
-      else break;
-    }
-    nums[j + 1] = temp;
-  }
-}
+// function solution(nums) {
+//   for (let i = 0; i < nums.length; i++) {
+//     let temp = nums[i];
+//     for (let j = i - 1; j >= 0; j--) {
+//       if (nums[j] > temp) nums[j + 1] = nums[j];
+//       else break;
+//     }
+//     nums[j + 1] = temp;
+//   }
+// }
 
-const nums = [2, 8, 3, 6, 1, 7, 5, 9];
+// const nums = [2, 8, 3, 6, 1, 7, 5, 9];
+// console.log(solution(nums));
+
+// 카드 가져가기 정렬
+// function solution(nums, k) {
+//   nums.sort((a, b) => b - a);
+//   let sum = 0;
+//   let diff = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     if (i % 2 !== 0) sum += nums[i];
+//     else diff.push(nums[i] - nums[i + 1]);
+//   }
+//   diff.sort((a, b) => b - a);
+//   for (let i = 0; i < k; i++) {
+//     sum += diff[i];
+//   }
+//   return sum;
+// }
+
+// const nums = [8, 2, 12, 12, 12, 12, 2, 2];
+// const k = 2;
+// console.log(solution(nums, k));
+
+// 이진수 정렬
+function solution(nums, k) {
+  let pair = [];
+  let answer = [];
+  nums.forEach((element) => {
+    let count = 0;
+    let tmp = element;
+    while (tmp > 0) {
+      count += tmp % 2;
+      tmp = parseInt(tmp / 2);
+    }
+    pair.push([element, count]);
+  });
+  pair.sort((a, b) => (a[1] === b[1] ? a[0] - b[0] : a[1] - b[1]));
+
+  for (let i = 0; i < nums.length; i++) {
+    answer.push(pair[i][0]);
+  }
+  return answer;
+}
+const nums = [5, 6, 7, 8, 9];
 console.log(solution(nums));
