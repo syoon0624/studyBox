@@ -630,34 +630,137 @@ console.log(solution(num, k));
 // ];
 // console.log(solution(arr));
 
-function solution(arr, m) {
-  let left = 1;
-  arr.sort((a, b) => a - b);
-  let right = arr[arr.length - 1];
+// 마구간 정하기
+// function solution(arr, m) {
+//   let left = 1;
+//   arr.sort((a, b) => a - b);
+//   let right = arr[arr.length - 1];
+//   let answer = 0;
+
+//   function Count(mid) {
+//     let cnt = 1;
+//     let ep = arr[0];
+//     for (let i = 1; i < arr.length; i++) {
+//       if (arr[i] - ep >= mid) {
+//         cnt++;
+//         ep = arr[i];
+//       }
+//     }
+//     return cnt;
+//   }
+//   while (left <= right) {
+//     mid = parseInt((left + right) / 2);
+//     if (Count(mid) >= m) {
+//       answer = mid;
+//       left = mid + 1;
+//     } else right = mid - 1;
+//   }
+
+//   return answer;
+// }
+
+// const arr = [5, 9, 10, 12, 14, 15],
+//   h = 3;
+// console.log(solution(arr, h));
+
+// 그리디 알고리즘
+// 침몰하는 타이타닉
+// function solution(nums, m) {
+//   let answer = 0;
+//   nums.sort((a, b) => a - b);
+//   let sum = 0;
+//   let left = 0;
+//   let right = nums.length - 1;
+//   while (left <= right) {
+//     if (nums[left] + nums[right] <= m) {
+//       left++;
+//       right--;
+//       answer++;
+//     } else {
+//       right--;
+//       answer++;
+//     }
+//   }
+//   return answer;
+// }
+// const nums = [
+//   68, 72, 30, 105, 55, 115, 36, 67, 119, 111, 95, 24, 25, 80, 55, 85, 75, 83,
+//   21, 81,
+// ];
+// const m = 120;
+
+// // 제일 무거운 사람과 제일 가벼운사람을 차례대로 비교
+// console.log(solution(nums, m));
+
+// 이동 횟수
+// function solution(nums) {
+//   let answer = 0;
+//   let kg = 5;
+//   nums.sort((a, b) => a - b);
+//   let left = 0;
+//   let right = nums.length - 1;
+//   while (left <= right) {
+//     if (nums[left] + nums[right] <= kg) {
+//       left++;
+//       right--;
+//       answer++;
+//     } else {
+//       right--;
+//       answer++;
+//     }
+//   }
+//   return answer;
+// }
+// const nums = [2, 5, 3, 4, 2, 3];
+// console.log(solution(nums));
+
+// 선긋기
+// function solution(nums) {
+//   nums.sort((a, b) => a[0] - b[0]);
+//   let answer = 0;
+//   let start = nums[0][0];
+//   let e = nums[0][1];
+//   for (i = 1; i < nums.length; i++) {
+//     if (nums[i][0] <= e && nums[i][1] > e) {
+//       e = nums[i][1];
+//     } else if (nums[i][0] < e) {
+//     } else {
+//       answer += e - start;
+//       start = nums[i][0];
+//       e = nums[i][1];
+//     }
+//   }
+//   answer += e - start;
+//   return answer;
+// }
+
+// const nums = [
+//   [2, 5],
+//   [1, 3],
+//   [3, 4],
+//   [6, 8],
+// ];
+// console.log(solution(nums));
+
+// 회의실 배정
+function solution(nums) {
+  nums.sort((a, b) => a[1] - b[1]);
+  let endtime = 0;
   let answer = 0;
-
-  function Count(mid) {
-    let cnt = 1;
-    let ep = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i] - ep >= mid) {
-        cnt++;
-        ep = arr[i];
-      }
+  for (let i of nums) {
+    if (i[0] >= endtime) {
+      answer++;
+      endtime = i[1];
     }
-    return cnt;
   }
-  while (left <= right) {
-    mid = parseInt((left + right) / 2);
-    if (Count(mid) >= m) {
-      answer = mid;
-      left = mid + 1;
-    } else right = mid - 1;
-  }
-
   return answer;
 }
 
-const arr = [5, 9, 10, 12, 14, 15],
-  h = 3;
-console.log(solution(arr, h));
+const times = [
+  [1, 4],
+  [2, 3],
+  [3, 5],
+  [4, 6],
+  [5, 7],
+];
+console.log(solution(times));
