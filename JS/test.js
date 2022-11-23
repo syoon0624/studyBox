@@ -496,24 +496,168 @@ console.log(solution(num, k));
 // console.log(solution(nums, k));
 
 // 이진수 정렬
-function solution(nums, k) {
-  let pair = [];
-  let answer = [];
-  nums.forEach((element) => {
-    let count = 0;
-    let tmp = element;
-    while (tmp > 0) {
-      count += tmp % 2;
-      tmp = parseInt(tmp / 2);
-    }
-    pair.push([element, count]);
-  });
-  pair.sort((a, b) => (a[1] === b[1] ? a[0] - b[0] : a[1] - b[1]));
+// function solution(nums, k) {
+//   let pair = [];
+//   let answer = [];
+//   nums.forEach((element) => {
+//     let count = 0;
+//     let tmp = element;
+//     while (tmp > 0) {
+//       count += tmp % 2;
+//       tmp = parseInt(tmp / 2);
+//     }
+//     pair.push([element, count]);
+//   });
+//   pair.sort((a, b) => (a[1] === b[1] ? a[0] - b[0] : a[1] - b[1]));
 
-  for (let i = 0; i < nums.length; i++) {
-    answer.push(pair[i][0]);
+//   for (let i = 0; i < nums.length; i++) {
+//     answer.push(pair[i][0]);
+//   }
+//   return answer;
+// }
+// const nums = [5, 6, 7, 8, 9];
+// console.log(solution(nums));
+
+// 이분 탐색
+// function solution(nums, m) {
+//   nums.sort((a, b) => a - b);
+//   let left = 0,
+//     right = nums.length - 1;
+//   while (left <= right) {
+//     let mid = parseInt((left + right) / 2);
+//     if (nums[mid] === m) return mid + 1;
+//     else if (nums[mid] > m) right = mid - 1;
+//     else left = mid + 1;
+//   }
+//   return -1;
+// }
+
+// const nums = [23, 87, 65, 12, 57, 32, 99, 81];
+// const m = 32;
+// console.log(solution(nums, m));
+
+// 랜선 자르기
+// function solution(nums, m) {
+//   let answer = 0;
+//   function Count(len) {
+//     let cnt = 0;
+//     nums.forEach((ele) => {
+//       cnt += parseInt(ele / len);
+//     });
+//     return cnt;
+//   }
+
+//   let left = 1,
+//     right = Math.max(...nums);
+//   while (left <= right) {
+//     let mid = parseInt((left + right) / 2);
+//     if (Count(mid) >= m) {
+//       answer = mid;
+//       left = mid + 1;
+//     } else right = mid - 1;
+//   }
+//   return answer;
+// }
+
+// const nums = [802, 743, 457, 539];
+// const m = 11;
+// console.log(solution(nums, m));
+
+// 초코볼
+// function solution(nums, m) {
+//   let answer = 0;
+//   let left = 1,
+//     right = Math.max(...nums);
+//   function Count(len) {
+//     let cnt = 0;
+//     nums.forEach((element) => {
+//       cnt += Math.ceil(element / len);
+//     });
+//     return cnt;
+//   }
+//   while (left <= right) {
+//     mid = parseInt((left + right) / 2);
+//     if (Count(mid) <= m) {
+//       answer = mid;
+//       right = mid - 1;
+//     } else left = mid + 1;
+//   }
+//   return answer;
+// }
+
+// const nums = [12, 24, 15, 7, 9];
+// const m = 8;
+// console.log(solution(nums, m));
+
+// function solution(board) {
+//   let left = 1;
+//   let right = 0;
+//   let sum = 0;
+//   let answer = 0;
+
+//   function Count(len) {
+//     let cnt = 0;
+//     board.forEach((element) => {
+//       for (let i = 0; i < element.length; i++) {
+//         if (element[i] >= len) cnt += len;
+//         else cnt += element[i];
+//       }
+//     });
+//     return cnt;
+//   }
+
+//   board.forEach((element) => {
+//     right = Math.max(right, Math.max(...element));
+//     sum += element.reduce((prev, cur) => prev + cur);
+//   });
+
+//   while (left <= right) {
+//     let mid = parseInt((left + right) / 2);
+//     if (Count(mid) >= sum / 2) {
+//       answer = mid;
+//       right = mid - 1;
+//     } else left = mid + 1;
+//   }
+//   return answer;
+// }
+
+// const arr = [
+//   [10, 9, 8, 9, 10],
+//   [3, 0, 7, 4, 3],
+//   [8, 5, 7, 5, 6],
+//   [9, 6, 1, 5, 5],
+//   [5, 5, 8, 5, 1],
+// ];
+// console.log(solution(arr));
+
+function solution(arr, m) {
+  let left = 1;
+  arr.sort((a, b) => a - b);
+  let right = arr[arr.length - 1];
+  let answer = 0;
+
+  function Count(mid) {
+    let cnt = 1;
+    let ep = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] - ep >= mid) {
+        cnt++;
+        ep = arr[i];
+      }
+    }
+    return cnt;
   }
+  while (left <= right) {
+    mid = parseInt((left + right) / 2);
+    if (Count(mid) >= m) {
+      answer = mid;
+      left = mid + 1;
+    } else right = mid - 1;
+  }
+
   return answer;
 }
-const nums = [5, 6, 7, 8, 9];
-console.log(solution(nums));
+
+const arr = [5, 9, 10, 12, 14, 15],
+  h = 3;
+console.log(solution(arr, h));
