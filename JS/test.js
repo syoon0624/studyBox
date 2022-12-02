@@ -743,24 +743,192 @@ console.log(solution(num, k));
 // console.log(solution(nums));
 
 // 회의실 배정
-function solution(nums) {
-  nums.sort((a, b) => a[1] - b[1]);
-  let endtime = 0;
-  let answer = 0;
-  for (let i of nums) {
-    if (i[0] >= endtime) {
-      answer++;
-      endtime = i[1];
-    }
-  }
-  return answer;
-}
+// function solution(nums) {
+//   nums.sort((a, b) => a[1] - b[1]);
+//   let endtime = 0;
+//   let answer = 0;
+//   for (let i of nums) {
+//     if (i[0] >= endtime) {
+//       answer++;
+//       endtime = i[1];
+//     }
+//   }
+//   return answer;
+// }
 
-const times = [
-  [1, 4],
-  [2, 3],
-  [3, 5],
-  [4, 6],
-  [5, 7],
-];
-console.log(solution(times));
+// const times = [
+//   [1, 4],
+//   [2, 3],
+//   [3, 5],
+//   [4, 6],
+//   [5, 7],
+// ];
+// console.log(solution(times));
+
+// BFS
+// function solution() {
+//   let answer = '';
+//   function BFS() {
+//     let queue = [];
+//     queue.push(1);
+//     let L = 0;
+//     while (queue.length) {
+//       let len = queue.length;
+//       answer += L + ' : ';
+//       for (let i = 0; i < len; i++) {
+//         let v = queue.shift();
+//         answer += v + ' ';
+//         for (let nv of [v * 2, v * 2 + 1]) {
+//           if (nv > 7) break;
+//           queue.push(nv);
+//         }
+//       }
+//       console.log(answer);
+//       answer = '';
+//       L++;
+//     }
+//   }
+//   BFS();
+//   return;
+// }
+// solution();
+
+// 송아지 찾기
+// function solution(s, e) {
+//   let answer = 0;
+//   function BFS() {
+//     let queue = [];
+//     let ch = Array(10001).fill(0);
+//     let L = 0;
+//     queue.push(s);
+//     ch[s] = 1;
+//     while (queue.length) {
+//       let len = queue.length;
+//       for (let i = 0; i < len; i++) {
+//         let v = queue.shift();
+//         if (v === e) return L;
+//         for (let nv of [v - 1, v + 1, v + 5]) {
+//           if (nv === e) return L + 1;
+//           if (ch[nv] === 0 && nv > 0 && nv <= 10000) {
+//             ch[nv] = 1;
+//             queue.push(nv);
+//           }
+//         }
+//       }
+//       L++;
+//     }
+//   }
+//   answer = BFS();
+//   return answer;
+// }
+
+// let s = 5,
+//   e = 14;
+// console.log(solution(s, e));
+
+// 그래프
+// function solution(n, edge) {
+// const graph = Array.from(Array(n + 1), () => Array(n + 1).fill(0));
+// for (let [a, b] of edge) {
+//   graph[a][b] = 1;
+//   graph[b][a] = 1;
+// }
+// return graph;
+// }
+// console.log(
+//   solution(5, [
+//     [1, 2],
+//     [1, 5],
+//     [2, 4],
+//     [3, 5],
+//     [1, 3],
+//   ])
+// );
+
+// 경로 탐색(인접행렬, DFS)
+// function solution(n, edge) {
+//   let answer = 0;
+//   const graph = Array.from(Array(n + 1), () => Array(n + 1).fill(0));
+//   const ch = Array(n + 1).fill(0);
+
+//   for (let [start, end] of edge) {
+//     graph[start][end] = 1;
+//   }
+
+//   function DFS(v) {
+//     if (v === n) answer++;
+//     else {
+//       for (let i = 1; i <= n; i++) {
+//         if (graph[v][i] === 1 && ch[i] === 0) {
+//           ch[i] = 1;
+//           DFS(i);
+//           ch[i] = 0;
+//         }
+//       }
+//     }
+//   }
+//   ch[1] = 1;
+//   DFS(1);
+//   return answer;
+// }
+
+// const n = 5;
+// const edge = [
+//   [1, 2],
+//   [1, 3],
+//   [1, 4],
+//   [2, 1],
+//   [2, 3],
+//   [2, 5],
+//   [3, 4],
+//   [4, 2],
+//   [4, 5],
+// ];
+// console.log(solution(n, edge));
+
+// 인접리스트
+// function solution(n, edge) {
+//   let answer = 0;
+//   let ch = Array(n + 1).fill(0);
+//   let graph = Array.from(Array(n + 1), () => Array());
+//   let path = [];
+//   for (let [a, b] of edge) {
+//     graph[a].push(b);
+//   }
+//   function DFS(v) {
+//     if (v === n) {
+//       answer++;
+//       console.log(path);
+//     } else {
+//       for (let nv of graph[v]) {
+//         if (ch[nv] === 0) {
+//           ch[nv] = 1;
+//           path.push(nv);
+//           DFS(nv);
+//           path.pop();
+//           ch[nv] = 0;
+//         }
+//       }
+//     }
+//   }
+//   ch[1] = 1;
+//   path.push(1);
+//   DFS(1);
+//   return answer;
+// }
+
+// const n = 5;
+// const edge = [
+//   [1, 2],
+//   [1, 3],
+//   [1, 4],
+//   [2, 1],
+//   [2, 3],
+//   [2, 5],
+//   [3, 4],
+//   [4, 2],
+//   [4, 5],
+// ];
+// console.log(solution(n, edge));
+
+//
