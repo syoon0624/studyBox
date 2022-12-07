@@ -1,6 +1,3 @@
-import './main.scss';
-
-const sum = (a, b) => a + b;
-
-console.log(sum(1, 2));
-console.log(sum(10, 20));
+document.querySelector('#input').addEventListener('keydown', (event) => {
+  console.log(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(event.key));
+});
