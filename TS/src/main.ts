@@ -1,0 +1,67 @@
+interface Movie {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+
+const inputEl = document.querySelector('input') as HTMLInputElement;
+const buttonEl = document.querySelector('button') as HTMLButtonElement;
+const movieListEl = document.querySelector('.movie-list') as HTMLDivElement;
+const observerEl = document.querySelector('.observer') as HTMLDivElement;
+const loaderEl = document.querySelector('.loader') as HTMLDivElement;
+
+inputEl.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter' && !event.isComposing) {
+    searchMovies(inputEl.value);
+  }
+});
+
+buttonEl.addEventListener('click', (event) => {
+  searchMovies(inputEl.value);
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+    }
+  });
+});
+io.observe(observerEl);
+
+async function getMovies(title: string, page: number) {
+  const res = await fetch(
+    `https://omdbapi.com/?apikey=7035c60c&s=${title}&page=${page}`
+  );
+  return await res.json();
+}
+
+async function searchMovies(title: string, page = 1) {
+  const { Search, totalResults } = await getMovies(title, page);
+  if (page === 1) {
+    movieListEl.innerHTML = '';
+  }
+  Search.forEach((movie: Movie) => {
+    const movieEl = document.createElement('div');
+    movieEl.classList.add('movie-item');
+    movieEl.innerHTML = /* html */ `
+      <div class="poster" style="background-image: url(${movie.Poster})"></div>
+      <h3>${movie.Title}</h3>
+      `;
+    movieListEl.append(movieEl);
+  });
+}
+
+function showObserver() {
+  observerEl.style.display = 'block';
+}
+function hideObserver() {
+  observerEl.style.display = 'none';
+}
+function showLoader() {
+  loaderEl.style.display = 'block';
+}
+function hideLoader() {
+  loaderEl.style.display = 'none';
+}

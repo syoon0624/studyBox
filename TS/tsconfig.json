@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2015",
+    "strict": true,
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": ["src/**/*"]
+}
