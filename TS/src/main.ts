@@ -12,6 +12,9 @@ const movieListEl = document.querySelector('.movie-list') as HTMLDivElement;
 const observerEl = document.querySelector('.observer') as HTMLDivElement;
 const loaderEl = document.querySelector('.loader') as HTMLDivElement;
 
+let currentPage = 1;
+let totalPage = 1;
+
 inputEl.addEventListener('keydown', (event) => {
   if (event.key === 'Enter' && !event.isComposing) {
     searchMovies(inputEl.value);
@@ -25,6 +28,7 @@ buttonEl.addEventListener('click', (event) => {
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
+      searchMovies(inputEl.value, currentPage + 1);
     }
   });
 });
@@ -38,10 +42,14 @@ async function getMovies(title: string, page: number) {
 }
 
 async function searchMovies(title: string, page = 1) {
+  hideObserver();
   const { Search, totalResults } = await getMovies(title, page);
   if (page === 1) {
     movieListEl.innerHTML = '';
+    showLoader();
   }
+  currentPage = page;
+  totalPage = Math.ceil(Number(totalResults) / 10);
   Search.forEach((movie: Movie) => {
     const movieEl = document.createElement('div');
     movieEl.classList.add('movie-item');
@@ -51,6 +59,7 @@ async function searchMovies(title: string, page = 1) {
       `;
     movieListEl.append(movieEl);
   });
+  showObserver();
 }
 
 function showObserver() {

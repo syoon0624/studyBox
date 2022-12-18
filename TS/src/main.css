@@ -2,3 +2,10 @@
   width: 300px;
   min-height: 440px;
 }
+
+.observer {
+  display: none;
+}
+.loader {
+  display: none;
+}
