@@ -1,11 +1,20 @@
-// 타입 단언(Assertioins)
+// 타입 가드(Guard)
 
-function getValue(x: string | number, isNumber: boolean) {
-  if (isNumber) {
-    return Number((x as number).toFixed(2));
+function add(val: string | number | boolean) {
+  let res = 'Result => ';
+  if (typeof val === 'number') {
+    res += val.toFixed(2);
   }
-  return (x as string).toUpperCase();
+  if (typeof val === 'string') {
+    res += val.toUpperCase();
+  }
+  console.log(res);
 }
 
-getValue('hello world', false); // 'hello world'
-getValue(3.141592, true); // 3.14
+add(3.141592); // 'Result => 3.14'
+add('hello world'); // 'Result => "hello world"'
+
+const el = document.querySelector('body') as HTMLBodyElement;
+if (el) {
+  console.log(el.innerHTML);
+}
