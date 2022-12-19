@@ -25,3 +25,24 @@ interface Fruits {
 
 const fruits: Fruits = ['Apple', 'Orange', 'Banana'];
 console.log(fruits);
+
+// 인터페이스 확장 (Extends)
+interface UserA {
+  name: string;
+  age: number;
+}
+interface UserB extends UserA {
+  isValid: boolean;
+}
+
+const heropys: UserA = {
+  name: 'Hercules',
+  age: 30,
+  isValid: true, // Error!
+};
+
+const neos: UserB = {
+  name: 'Neo',
+  age: 102,
+  isValid: true,
+};
