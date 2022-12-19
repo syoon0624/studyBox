@@ -5,7 +5,9 @@
     "strict": true,
     "esModuleInterop": true,
     "baseUrl": "./",
+    "isolatedModules": false,
     "lib": ["ESNext", "DOM"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

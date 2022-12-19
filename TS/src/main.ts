@@ -1,76 +1,58 @@
-interface Movie {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
+const a: string = 'Hello world!';
+const b: number = 123;
+const c: boolean = true;
+const d: number[] = [1, 2, 3];
+const e: Obj = {
+  name: 'Lee',
+  age: 85,
+  isValid: true,
+};
+
+interface Obj {
+  name: string;
+  age: number;
+  isValid: boolean;
 }
 
-const inputEl = document.querySelector('input') as HTMLInputElement;
-const buttonEl = document.querySelector('button') as HTMLButtonElement;
-const movieListEl = document.querySelector('.movie-list') as HTMLDivElement;
-const observerEl = document.querySelector('.observer') as HTMLDivElement;
-const loaderEl = document.querySelector('.loader') as HTMLDivElement;
+// 튜플 지정
+const g: [number, number][] = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
+const h: unknown = 123;
 
-let currentPage = 1;
-let totalPage = 1;
-
-inputEl.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' && !event.isComposing) {
-    searchMovies(inputEl.value);
-  }
-});
-
-buttonEl.addEventListener('click', (event) => {
-  searchMovies(inputEl.value);
-});
-
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      searchMovies(inputEl.value, currentPage + 1);
-    }
-  });
-});
-io.observe(observerEl);
-
-async function getMovies(title: string, page: number) {
-  const res = await fetch(
-    `https://omdbapi.com/?apikey=7035c60c&s=${title}&page=${page}`
-  );
-  return await res.json();
+interface Objec {
+  [key: string]: unknown;
 }
 
-async function searchMovies(title: string, page = 1) {
-  hideObserver();
-  const { Search, totalResults } = await getMovies(title, page);
-  if (page === 1) {
-    movieListEl.innerHTML = '';
-    showLoader();
-  }
-  currentPage = page;
-  totalPage = Math.ceil(Number(totalResults) / 10);
-  Search.forEach((movie: Movie) => {
-    const movieEl = document.createElement('div');
-    movieEl.classList.add('movie-item');
-    movieEl.innerHTML = /* html */ `
-      <div class="poster" style="background-image: url(${movie.Poster})"></div>
-      <h3>${movie.Title}</h3>
-      `;
-    movieListEl.append(movieEl);
-  });
-  showObserver();
+const Lee: Objec = {
+  a: 1,
+  b: 'Helowe',
+  c: true,
+};
+
+function log(a: number, b: number): number {
+  return a + b;
 }
 
-function showObserver() {
-  observerEl.style.display = 'block';
+log(1, 2);
+
+// 유니온 타입
+let name: number | string = 1;
+name = 'hello';
+
+interface A {
+  a: string;
 }
-function hideObserver() {
-  observerEl.style.display = 'none';
+interface B {
+  b: string;
 }
-function showLoader() {
-  loaderEl.style.display = 'block';
-}
-function hideLoader() {
-  loaderEl.style.display = 'none';
-}
+
+// 인터섹션 타입
+const Lees: A & B = {
+  a: 'a',
+  b: 'b',
+};
+
+export {};
