@@ -1,20 +1,27 @@
-// 타입 가드(Guard)
+// 인터페이스(Inerface)
 
-function add(val: string | number | boolean) {
-  let res = 'Result => ';
-  if (typeof val === 'number') {
-    res += val.toFixed(2);
-  }
-  if (typeof val === 'string') {
-    res += val.toUpperCase();
-  }
-  console.log(res);
+interface User {
+  readonly name: string;
+  age: number;
+  // 선택적으로 있어도 되고, 없어도 되는 프로퍼티
+  isValid?: boolean;
 }
 
-add(3.141592); // 'Result => 3.14'
-add('hello world'); // 'Result => "hello world"'
+const heropy: User = {
+  name: 'Hercules',
+  age: 30,
+  isValid: true,
+};
 
-const el = document.querySelector('body') as HTMLBodyElement;
-if (el) {
-  console.log(el.innerHTML);
+const neo: User = {
+  name: 'Neo',
+  age: 102,
+};
+
+// 인덱스 시그니처
+interface Fruits {
+  [key: number]: string;
 }
+
+const fruits: Fruits = ['Apple', 'Orange', 'Banana'];
+console.log(fruits);
