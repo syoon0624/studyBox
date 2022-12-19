@@ -1,10 +1,15 @@
-// 타입 별칭(Type Alias)
-interface A {
+// 명시적 this 타입 지정
+interface Cat {
   name: string;
   age: number;
 }
 
-const a: Hello = 1;
-const b: Hello = 'Hello world';
+const cat: Cat = {
+  name: 'Lucy',
+  age: 3,
+};
 
-type Hello = string | number | A;
+function hello(this: Cat, message: string) {
+  console.log(`Hello ${this.name}, ${message}}`);
+}
+hello.call(cat, 'You are pretty awesome!');
