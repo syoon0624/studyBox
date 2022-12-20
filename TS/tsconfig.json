@@ -4,7 +4,7 @@
     "target": "ES2015",
     "strict": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "moduleResolution": "node",
     "lib": ["ESNext", "DOM"]
   },

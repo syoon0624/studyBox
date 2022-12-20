@@ -1,6 +1,24 @@
-import _ from 'lodash';
+interface User {
+  name: string;
+  age: number;
+  isValid: boolean;
+}
 
-const str = 'the quick brown fox jumped over the lazy dog';
+const heropy: Partial<User> = {
+  name: 'Heropy',
+};
 
-console.log(_.camelCase(str));
-console.log(_.snakeCase(str));
+const heropy2: Required<User> = {
+  name: 'Heropy2',
+  age: 85,
+  isValid: true,
+};
+
+const heropy3: Readonly<User> = {
+  name: 'Heropy3',
+  age: 86,
+  isValid: false,
+};
+
+// 에러
+heropy3.age = 102;
