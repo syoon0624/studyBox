@@ -1,4 +1,6 @@
-/// <reference path="./common.d.ts"/>
-import * as commonjs from './common';
+import _ from 'lodash';
 
-console.log(commonjs.heropy);
+const str = 'the quick brown fox jumped over the lazy dog';
+
+console.log(_.camelCase(str));
+console.log(_.snakeCase(str));
