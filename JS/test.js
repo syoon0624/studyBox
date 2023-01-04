@@ -1046,3 +1046,20 @@ console.log(solution(num, k));
 //   [1, 0, 1, 0, 1, 0, 0],
 // ];
 // console.log(solution(board));
+
+function solution(ingredient) {
+  var answer = 0;
+
+  for (let i = 0; i < ingredient.length; i++) {
+    if (ingredient[i] === 1 && ingredient[i + 1] === 2 && ingredient[i + 2] === 3 && ingredient[i + 3] === 1) {
+      ingredient.splice(i, 4);
+      i -= 3;
+      answer++;
+    }
+  }
+
+  return answer;
+}
+const ingredient = [2, 1, 1, 2, 3, 1, 2, 3, 1];
+
+solution(ingredient);
