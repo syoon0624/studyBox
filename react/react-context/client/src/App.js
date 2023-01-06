@@ -1,6 +1,5 @@
 import React from 'react';
 import OrderPage from './pages/OrderPage';
-import SummaryPage from './pages/SummaryPage';
 
 const App = () => {
   return (
