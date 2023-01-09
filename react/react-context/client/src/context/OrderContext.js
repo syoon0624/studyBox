@@ -56,7 +56,14 @@ export function OrderContextProvider(props) {
       setOrderCounts(newOrderCounts);
     }
 
-    return [{ ...orderCounts, totals }, updateItemCount];
+    function resetOrderCounts() {
+      setOrderCounts({
+        products: new Map(),
+        options: new Map(),
+      });
+    }
+
+    return [{ ...orderCounts, totals }, updateItemCount, resetOrderCounts];
   }, [orderCounts, totals]);
 
   return <OrderContext.Provider value={value} {...props} />;
