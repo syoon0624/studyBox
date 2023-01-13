@@ -1,6 +1,10 @@
 import './App.css';
 
-function App() {
+type Props = {
+  value: number;
+};
+
+function App({ value }: Props) {
   return (
     <div className="App">
       <p>Clicked: times</p>
